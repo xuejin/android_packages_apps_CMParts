@@ -51,7 +51,7 @@
     <!-- User interface : WebView -->
     <string name="ui_webview_title">WebView</string>
     <string name="pref_pinch_reflow_title">Reflow after pinch in</string>
-    <string name="pref_pinch_reflow_summary">Reflow content immediately after pinch to zoom in</string>
+    <string name="pref_pinch_reflow_summary">Reflow webview content immediately after pinch to zoom in</string>
 
     <!-- User interface : Overscroll -->
     <string name="ui_overscroll_title">Overscrolling</string>
@@ -181,6 +181,7 @@
     <string name="long_press_home_title">Long-press home settings</string>
     <string name="long_press_home_summary">Number of recent applications, etc</string>
     <string name="input_search_key_title">Search key behaviour</string>
+    <string name="input_search_key_summary">Define custom actions for search key and long-press search key</string>
     <string name="pref_input_custom_search_app_toggle_title">Search key app</string>
     <string name="pref_input_custom_search_app_toggle_summary">Starts a custom app when pressing the search key</string>
     <string name="pref_input_custom_search_app_activity_title">Custom application</string>
@@ -422,6 +423,8 @@
     <string name="sound_alarms_limitvol_dialog">Alarm volume</string>
     <!-- Quiet hours -->
     <string name="sound_category_quiet_hours_title">Quiet hours</string>
+    <string name="quiet_hours_note_title">Note</string>
+    <string name="quiet_hours_note_summary">Incoming calls will behave like usual during quiet hours</string>
     <string name="quiet_hours_enabled">Enable quiet hours</string>
     <string name="quiet_hours_enabled_on">Quiet hours will be enforced</string>
     <string name="quiet_hours_enabled_off">Notifications will behave like normal</string>

@@ -38,8 +38,22 @@
                 <category android:name="com.cyanogenmod.cmparts.SHORTCUT" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.InputSearchKeyActivity"
+            android:label="@string/input_search_key_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cyanogenmod.cmparts.SHORTCUT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activities.UIActivity"
             android:label="@string/ui_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.cyanogenmod.cmparts.SHORTCUT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.UIPowerWidgetActivity"
+            android:label="@string/title_expanded_widget">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.cyanogenmod.cmparts.SHORTCUT" />
@@ -155,6 +169,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.SoundActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.SoundQuietHoursActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
