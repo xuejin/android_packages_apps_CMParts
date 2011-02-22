@@ -35,14 +35,6 @@
 			android:title="@string/pref_pinch_reflow_title" android:summary="@string/pref_pinch_reflow_summary" />
 	</PreferenceCategory>
 
-    <!-- Statusbar settings -->
-    <PreferenceCategory android:key="statusbar_category"
-        android:title="@string/statusbar_title">
-      <CheckBoxPreference android:key="battery_percentage"
-        android:title="@string/battery_percentage_title"
-        android:summary="@string/battery_percentage_summary" />
-    </PreferenceCategory>
-
 	<PreferenceCategory android:title="@string/ui_overscroll_title">
 		<ListPreference android:key="pref_overscroll_effect"
 			android:dialogTitle="@string/pref_overscroll_title" android:title="@string/pref_overscroll_title"

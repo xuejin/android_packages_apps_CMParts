@@ -58,8 +58,6 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
 
     private static final String POWER_PROMPT_PREF = "power_dialog_prompt";
 
-    private static final String BATTERY_PERCENTAGE_PREF = "battery_percentage";
-
     private static final String OVERSCROLL_PREF = "pref_overscroll_effect";
 
     private static final String OVERSCROLL_WEIGHT_PREF = "pref_overscroll_weight";
@@ -69,8 +67,6 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
     private CheckBoxPreference mPowerPromptPref;
 
     private ListPreference mRenderEffectPref;
-
-    private CheckBoxPreference mBatteryPercentagePref;
 
     private ListPreference mOverscrollPref;
 
@@ -105,13 +101,6 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
         mRenderEffectPref = (ListPreference) prefSet.findPreference(RENDER_EFFECT_PREF);
         mRenderEffectPref.setOnPreferenceChangeListener(this);
         updateFlingerOptions();
-
-        /* Status Bar */
-        /* Battery Percentage */
-        mBatteryPercentagePref =
-            (CheckBoxPreference) prefSet.findPreference(BATTERY_PERCENTAGE_PREF);
-        mBatteryPercentagePref.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.BATTERY_PERCENTAGE_STATUS_ICON, 0) == 1);
 
         /* Overscroll Effect */
         mOverscrollPref = (ListPreference) prefSet.findPreference(OVERSCROLL_PREF);
@@ -152,12 +141,6 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
         } else if (preference == mPowerPromptPref) {
             value = mPowerPromptPref.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.POWER_DIALOG_PROMPT,
-                    value ? 1 : 0);
-            return true;
-        } else if (preference == mBatteryPercentagePref) {
-            value = mBatteryPercentagePref.isChecked();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.BATTERY_PERCENTAGE_STATUS_ICON,
                     value ? 1 : 0);
             return true;
         }
