@@ -73,7 +73,7 @@ public class PerformanceSettingsActivity extends PreferenceActivity implements P
 
     private static final String PURGEABLE_ASSETS_PERSIST_PROP = "persist.sys.purgeable_assets";
 
-    private static final String PURGEABLE_ASSETS_DEFAULT = "1";
+    private static final String PURGEABLE_ASSETS_DEFAULT = "0";
 
     private static final String LOCK_HOME_PREF = "pref_lock_home";
 
