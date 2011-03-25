@@ -176,6 +176,8 @@
     <string name="pref_volbtn_music_controls_summary">Seek music tracks when long-pressing the volume buttons while screen off</string>
     <string name="pref_cambtn_music_controls_title">Camera button music control</string>
     <string name="pref_cambtn_music_controls_summary">Toggle play/pause when long-pressing the camera button while screen off</string>
+    <string name="pref_volbtn_orientation_title">Swap volume buttons in landscape</string>
+    <string name="pref_volbtn_orientation_summary">Enable swapping of volume button function according to phone orientation (requires reboot)</string>
     <string name="lockscreen_widgets_note_title">Note</string>
     <string name="lockscreen_widgets_note_summary">Choosing minimalistic lense style hides all widgets except music control. Yet below options are not unset to allow easy switching to other styles</string>
 

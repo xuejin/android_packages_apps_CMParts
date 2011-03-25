@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.Intent.ShortcutIconResource;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -39,6 +40,12 @@ public class InputActivity extends PreferenceActivity {
 
     private static final String CAMBTN_MUSIC_CTRL_PREF = "pref_cambtn_music_controls";
 
+    private static final String VOLBTN_ORIENT_PREF = "pref_volbtn_orientation";
+
+    private static final String VOLBTN_ORIENT_PERSIST_PROP = "persist.sys.volbtn_orient_swap";
+
+    private static final String VOLBTN_ORIENT_DEFAULT = "0";
+
     private static final String BUTTON_CATEGORY = "pref_category_button_settings";
 
     private static final String USER_DEFINED_KEY1 = "pref_user_defined_key1";
@@ -52,6 +59,8 @@ public class InputActivity extends PreferenceActivity {
     private CheckBoxPreference mVolBtnMusicCtrlPref;
 
     private CheckBoxPreference mCamBtnMusicCtrlPref;
+
+    private CheckBoxPreference mVolBtnOrientationPref;
 
     private Preference mUserDefinedKey1Pref;
 
@@ -88,6 +97,10 @@ public class InputActivity extends PreferenceActivity {
         mCamBtnMusicCtrlPref = (CheckBoxPreference) prefSet.findPreference(CAMBTN_MUSIC_CTRL_PREF);
         mCamBtnMusicCtrlPref.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.CAMBTN_MUSIC_CONTROLS, 0) == 1);
+
+        mVolBtnOrientationPref = (CheckBoxPreference) prefSet.findPreference(VOLBTN_ORIENT_PREF);
+        String volBtnOrientation = SystemProperties.get(VOLBTN_ORIENT_PERSIST_PROP, VOLBTN_ORIENT_DEFAULT);
+        mVolBtnOrientationPref.setChecked("1".equals(volBtnOrientation));
 
         PreferenceCategory buttonCategory = (PreferenceCategory) prefSet
                 .findPreference(BUTTON_CATEGORY);
@@ -136,6 +149,10 @@ public class InputActivity extends PreferenceActivity {
             value = mCamBtnMusicCtrlPref.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.CAMBTN_MUSIC_CONTROLS,
                     value ? 1 : 0);
+            return true;
+        } else if (preference == mVolBtnOrientationPref) {
+            SystemProperties.set(VOLBTN_ORIENT_PERSIST_PROP,
+                    mVolBtnOrientationPref.isChecked() ? "1" : "0");
             return true;
         } else if (preference == mUserDefinedKey1Pref) {
             pickShortcut(1);
