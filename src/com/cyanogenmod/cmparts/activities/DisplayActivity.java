@@ -17,10 +17,12 @@
 package com.cyanogenmod.cmparts.activities;
 
 import com.cyanogenmod.cmparts.R;
+import com.cyanogenmod.cmparts.activities.CPUActivity;
 
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -50,6 +52,16 @@ public class DisplayActivity extends PreferenceActivity implements OnPreferenceC
     private CheckBoxPreference mElectronBeamAnimationOff;
 
     private CheckBoxPreference mRotate180Pref;
+
+    private CheckBoxPreference mOMAPDSSmodePref;
+
+    private static final String OMAP_DSS_MODE_PREF = "pref_omap_dss_mode";
+
+    public static final String OMAP_DSS_MODE_PERSIST_PROP = "persist.sys.omap_dss_mode";
+
+    public static final String OMAP_DSS_MODE_DEFAULT = "1";
+
+    public static final String OMAP_DSS_MODE_FILE = "/sys/devices/omapdss/display0/update_mode";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,6 +102,12 @@ public class DisplayActivity extends PreferenceActivity implements OnPreferenceC
         mRotate180Pref = (CheckBoxPreference) prefSet.findPreference(ROTATE_180_PREF);
         mRotate180Pref.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATE_180, 0) == 1);
+
+        /* Milestone specific kernel bug workaround (temporary) */
+        mOMAPDSSmodePref = (CheckBoxPreference) prefSet.findPreference(OMAP_DSS_MODE_PREF);
+        String omapDssMode = SystemProperties.get(OMAP_DSS_MODE_PERSIST_PROP, OMAP_DSS_MODE_DEFAULT);
+        mOMAPDSSmodePref.setChecked("1".equals(omapDssMode));
+
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -115,6 +133,12 @@ public class DisplayActivity extends PreferenceActivity implements OnPreferenceC
             value = mRotate180Pref.isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.ACCELEROMETER_ROTATE_180, value ? 1 : 0);
+        }
+
+        if (preference == mOMAPDSSmodePref) {
+            SystemProperties.set(OMAP_DSS_MODE_PERSIST_PROP,
+                    mOMAPDSSmodePref.isChecked() ? "1" : "0");
+            CPUActivity.writeOneLine(OMAP_DSS_MODE_FILE, (String) (mOMAPDSSmodePref.isChecked() ? "1" : "2"));
         }
 
         return true;
