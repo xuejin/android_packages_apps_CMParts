@@ -181,6 +181,8 @@
     <string name="pref_cambtn_music_controls_summary">Toggle play/pause when long-pressing the camera button while screen off</string>
     <string name="pref_volbtn_orientation_title">Swap volume buttons in landscape</string>
     <string name="pref_volbtn_orientation_summary">Enable swapping of volume button function according to phone orientation (requires reboot)</string>
+    <string name="pref_dock_observer_off_title">Disable dock observer</string>
+    <string name="pref_dock_observer_off_summary">No action on magnets, useful for users of carrying cases with magnetic closure</string>
     <string name="lockscreen_widgets_note_title">Note</string>
     <string name="lockscreen_widgets_note_summary">Choosing minimalistic lense style hides all widgets except music control. Yet below options are not unset to allow easy switching to other styles</string>
 
@@ -305,6 +307,7 @@
 
     <string name="general_title">General</string>
     <string name="buttons_title">Buttons</string>
+    <string name="dock_title">Dock</string>
 
     <!-- UI Settings : Power off prompt -->
     <string name="pref_power_prompt_title">Power prompt</string>

@@ -46,6 +46,12 @@ public class InputActivity extends PreferenceActivity {
 
     private static final String VOLBTN_ORIENT_DEFAULT = "0";
 
+    private static final String DOCK_OBSERVER_OFF_PREF = "pref_dock_observer_off";
+
+    private static final String DOCK_OBSERVER_OFF_PERSIST_PROP = "sys.persist.dock_observer_off";
+
+    private static final String DOCK_OBSERVER_OFF_DEFAULT = "0";
+
     private static final String BUTTON_CATEGORY = "pref_category_button_settings";
 
     private static final String USER_DEFINED_KEY1 = "pref_user_defined_key1";
@@ -61,6 +67,8 @@ public class InputActivity extends PreferenceActivity {
     private CheckBoxPreference mCamBtnMusicCtrlPref;
 
     private CheckBoxPreference mVolBtnOrientationPref;
+
+    private CheckBoxPreference mDockObserverOffPref;
 
     private Preference mUserDefinedKey1Pref;
 
@@ -101,6 +109,10 @@ public class InputActivity extends PreferenceActivity {
         mVolBtnOrientationPref = (CheckBoxPreference) prefSet.findPreference(VOLBTN_ORIENT_PREF);
         String volBtnOrientation = SystemProperties.get(VOLBTN_ORIENT_PERSIST_PROP, VOLBTN_ORIENT_DEFAULT);
         mVolBtnOrientationPref.setChecked("1".equals(volBtnOrientation));
+
+        mDockObserverOffPref = (CheckBoxPreference) prefSet.findPreference(DOCK_OBSERVER_OFF_PREF);
+        String dockObserverOff = SystemProperties.get(DOCK_OBSERVER_OFF_PERSIST_PROP, DOCK_OBSERVER_OFF_DEFAULT);
+        mDockObserverOffPref.setChecked("1".equals(dockObserverOff));
 
         PreferenceCategory buttonCategory = (PreferenceCategory) prefSet
                 .findPreference(BUTTON_CATEGORY);
@@ -153,6 +165,10 @@ public class InputActivity extends PreferenceActivity {
         } else if (preference == mVolBtnOrientationPref) {
             SystemProperties.set(VOLBTN_ORIENT_PERSIST_PROP,
                     mVolBtnOrientationPref.isChecked() ? "1" : "0");
+            return true;
+        } else if (preference == mDockObserverOffPref) {
+            SystemProperties.set(DOCK_OBSERVER_OFF_PERSIST_PROP,
+                    mDockObserverOffPref.isChecked() ? "1" : "0");
             return true;
         } else if (preference == mUserDefinedKey1Pref) {
             pickShortcut(1);
