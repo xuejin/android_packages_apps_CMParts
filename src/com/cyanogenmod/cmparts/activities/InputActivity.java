@@ -48,7 +48,7 @@ public class InputActivity extends PreferenceActivity {
 
     private static final String DOCK_OBSERVER_OFF_PREF = "pref_dock_observer_off";
 
-    private static final String DOCK_OBSERVER_OFF_PERSIST_PROP = "sys.persist.dock_observer_off";
+    private static final String DOCK_OBSERVER_OFF_PERSIST_PROP = "persist.sys.dock_observer_off";
 
     private static final String DOCK_OBSERVER_OFF_DEFAULT = "0";
 
