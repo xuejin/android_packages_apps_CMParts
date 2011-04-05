@@ -63,6 +63,14 @@ public class DisplayActivity extends PreferenceActivity implements OnPreferenceC
 
     public static final String OMAP_DSS_MODE_FILE = "/sys/devices/omapdss/display0/update_mode";
 
+    private CheckBoxPreference mNaOnPlugPref;
+
+    private static final String NA_ON_PLUG_PREF = "pref_na_on_plug";
+
+    public static final String NA_ON_PLUG_PERSIST_PROP = "persist.sys.no_action_on_plug";
+
+    public static final String NA_ON_PLUG_DEFAULT = "0";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +116,11 @@ public class DisplayActivity extends PreferenceActivity implements OnPreferenceC
         String omapDssMode = SystemProperties.get(OMAP_DSS_MODE_PERSIST_PROP, OMAP_DSS_MODE_DEFAULT);
         mOMAPDSSmodePref.setChecked("1".equals(omapDssMode));
 
+        /* Keep display off on plug */
+        mNaOnPlugPref = (CheckBoxPreference) prefSet.findPreference(NA_ON_PLUG_PREF);
+        String naOnPlug = SystemProperties.get(NA_ON_PLUG_PERSIST_PROP, NA_ON_PLUG_DEFAULT);
+        mNaOnPlugPref.setChecked("1".equals(naOnPlug));
+
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -139,6 +152,11 @@ public class DisplayActivity extends PreferenceActivity implements OnPreferenceC
             SystemProperties.set(OMAP_DSS_MODE_PERSIST_PROP,
                     mOMAPDSSmodePref.isChecked() ? "1" : "0");
             CPUActivity.writeOneLine(OMAP_DSS_MODE_FILE, (String) (mOMAPDSSmodePref.isChecked() ? "1" : "2"));
+        }
+
+        if (preference == mNaOnPlugPref) {
+            SystemProperties.set(NA_ON_PLUG_PERSIST_PROP,
+                    mNaOnPlugPref.isChecked() ? "1" : "0");
         }
 
         return true;
