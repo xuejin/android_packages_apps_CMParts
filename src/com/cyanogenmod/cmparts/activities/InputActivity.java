@@ -24,7 +24,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
@@ -32,7 +34,8 @@ import android.provider.Settings;
 
 import com.cyanogenmod.cmparts.R;
 
-public class InputActivity extends PreferenceActivity {
+public class InputActivity extends PreferenceActivity implements
+        OnPreferenceChangeListener {
 
     private static final String TRACKBALL_WAKE_PREF = "pref_trackball_wake";
 
@@ -52,6 +55,12 @@ public class InputActivity extends PreferenceActivity {
 
     private static final String DOCK_OBSERVER_OFF_DEFAULT = "0";
 
+    private static final String KEYPAD_TYPE_PREF = "pref_keypad_type";
+
+    private static final String KEYPAD_TYPE_PERSIST_PROP = "persist.sys.keypad_type";
+
+    private static final String KEYPAD_TYPE_DEFAULT = "euro_qwerty";
+
     private static final String BUTTON_CATEGORY = "pref_category_button_settings";
 
     private static final String USER_DEFINED_KEY1 = "pref_user_defined_key1";
@@ -69,6 +78,8 @@ public class InputActivity extends PreferenceActivity {
     private CheckBoxPreference mVolBtnOrientationPref;
 
     private CheckBoxPreference mDockObserverOffPref;
+
+    private ListPreference mKeypadTypePref;
 
     private Preference mUserDefinedKey1Pref;
 
@@ -113,6 +124,11 @@ public class InputActivity extends PreferenceActivity {
         mDockObserverOffPref = (CheckBoxPreference) prefSet.findPreference(DOCK_OBSERVER_OFF_PREF);
         String dockObserverOff = SystemProperties.get(DOCK_OBSERVER_OFF_PERSIST_PROP, DOCK_OBSERVER_OFF_DEFAULT);
         mDockObserverOffPref.setChecked("1".equals(dockObserverOff));
+
+        mKeypadTypePref = (ListPreference) prefSet.findPreference(KEYPAD_TYPE_PREF);
+        String keypadType = SystemProperties.get(KEYPAD_TYPE_PERSIST_PROP, KEYPAD_TYPE_DEFAULT);
+        mKeypadTypePref.setValue(keypadType);
+        mKeypadTypePref.setOnPreferenceChangeListener(this);
 
         PreferenceCategory buttonCategory = (PreferenceCategory) prefSet
                 .findPreference(BUTTON_CATEGORY);
@@ -181,6 +197,15 @@ public class InputActivity extends PreferenceActivity {
             return true;
         }
 
+        return false;
+    }
+
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mKeypadTypePref) {
+            String keypadType = (String) newValue;
+            SystemProperties.set(KEYPAD_TYPE_PERSIST_PROP, keypadType);
+            return true;
+        }
         return false;
     }
 
