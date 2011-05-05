@@ -568,7 +568,7 @@
     <string name="sound_alarms_attenuation_dialog">Wecker-Dämpfung</string>
     <string name="sound_notifications_limitvol_dialog">Benachrichtigungslautstärke</string>
     <string name="sound_rings_limitvol_dialog">Klingeltonlautstärke</string>
-    <string name="sound_alarms_limitvol_dialog">Weckerlautstärke</string>    <!-- Status Bar -->
+    <string name="sound_alarms_limitvol_dialog">Weckerlautstärke</string>
     <!-- Quiet hours -->
     <string name="sound_category_quiet_hours_title">Ruhige Stunden</string>
     <string name="quiet_hours_note_title">Hinweis</string>
