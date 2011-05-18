@@ -81,13 +81,6 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
         mStatusBarAmPm.setOnPreferenceChangeListener(this);
     }
 
-        mStatusBarAmPm = (ListPreference) prefSet.findPreference(PREF_STATUS_BAR_AM_PM);
-        int statusBarAmPm = Settings.System.getInt(getContentResolver(),
-                Settings.System.STATUS_BAR_AM_PM, 2);
-        mStatusBarAmPm.setValue(String.valueOf(statusBarAmPm));
-        mStatusBarAmPm.setOnPreferenceChangeListener(this);
-    }
-
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mStatusBarAmPm) {
             int statusBarAmPm = Integer.valueOf((String) newValue);
