@@ -28,6 +28,8 @@
     <string name="system_settings_title_head">System</string>
     <string name="system_settings_title_subhead">System settings</string>
     <string name="system_settings_summary_head">System changelog, stats, update notifications</string>
+    <string name="permissions_settings_title_head">Permissions</string>
+    <string name="permissions_settings_title_subhead">Permissions managment settings</string>
 
     <!--  Update Notifications -->
     <string name="updatenotify_title">Update notifications</string>
@@ -209,6 +211,8 @@
     <string name="pref_lockscreen_always_music_controls_summary">Display music controls regardless of whether or not music is playing</string>
     <string name="pref_trackball_wake_title">Trackball wake</string>
     <string name="pref_trackball_wake_summary">Pressing the trackball wakes the device</string>
+    <string name="pref_volume_wake_title">Volume rocker wake</string>
+    <string name="pref_volume_wake_summary">Pressing the volume up/down wakes the device. Intended for devices with hard to press power key</string>
     <string name="pref_trackball_unlock_title">Trackball unlock</string>
     <string name="pref_trackball_unlock_summary">Pressing the trackball unlocks the device</string>
     <string name="pref_menu_unlock_title">Menu unlock</string>
@@ -228,6 +232,8 @@
     <string name="lockscreen_delay_header">Delay and timeout</string>
     <string name="pref_lockscreen_style_title">Lockscreen style</string>
     <string name="pref_lockscreen_style_summary">Choose the style of the lockscreen</string>
+    <string name="pref_in_call_style_title">Incoming call style</string>
+    <string name="pref_in_call_style_summary">Choose the style of the incoming calls accept/reject widget</string>
     <string name="pref_volbtn_music_controls_title">Volume button music controls</string>
     <string name="pref_volbtn_music_controls_summary">Seek music tracks when long-pressing the volume buttons while screen off</string>
     <string name="pref_cambtn_music_controls_title">Camera button music control</string>
@@ -619,4 +625,11 @@
     <string name="cpu_max_freq_summary">Maximum CPU frequency\nCurrently: %s</string>
     <string name="cpu_set_on_boot">Set on boot</string>
     <string name="cpu_set_on_boot_summary">Restore CPU settings on boot</string>
+
+    <!-- Permissions Managment Settings strings -->
+    <string name="perm_enable_managment">Enable managment</string>
+    <string name="perm_enable_managment_summary">Enables permissions managment</string>
+    <string name="perm_enable_warning_message">Warning!\nRevoking most permissions will most likely cause applications to malfunction. If an application with revoked permissions force-closes please grant the expected permissions or don\'t use the application.\nPlease DO NOT send bug reports to Cyanogenmod if an application with revoked permissions is not working as expected!</string>
+    <string name="perm_enable_warning_title">Are you sure?</string>
+
 </resources>
