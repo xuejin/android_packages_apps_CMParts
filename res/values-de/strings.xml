@@ -135,7 +135,7 @@
     <string name="title_color_picker">Farbe wählen</string>
     <string name="msg_color_picker">Zum Bestätigen auf Mitte der Farbe tippen.\nZum Abbrechen Zurück-Taste drücken.</string>
 
-    <!-- User interface: LED notifications -->
+    <!-- User interface: Trackball notifcations -->
     <string name="trackball_notifications_title">Farbe der Trackball-Benachrichtigungen</string>
     <string name="dialog_color_trackball">Wähle eine Farbe</string>
     <string name="dialog_blink_trackball">Wähle die Blinkrate</string>
@@ -246,7 +246,7 @@
     <string name="pref_lockscreen_timeout_title">Display-Timeout und Sperre</string>
     <string name="pref_lockscreen_timeout_summary">Verzögerung vor automatischer Bildschirmabschaltung und Sperre anpassen</string>
 
-    <!-- Lockscreen Settings -->
+    <!-- Input Settings -->
     <string name="lockscreen_settings_title">Bildschirmsperre-Einstellungen</string>
     <string name="pref_lockscreen_always_battery_title">Batteriestatus immer anzeigen</string>
     <string name="pref_lockscreen_always_battery_summary">Den Batteriestatus immer auf dem Lockscreen anzeigen</string>

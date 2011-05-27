@@ -17,6 +17,7 @@
 package com.cyanogenmod.cmparts.activities;
 
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -36,15 +37,23 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
 
     private static final String PREF_STATUS_BAR_CM_BATTERY = "pref_status_bar_cm_battery";
 
+    private static final String PREF_STATUS_BAR_ONEPERC_BATTERY = "pref_status_bar_oneperc_battery";
+
     private static final String PREF_STATUS_BAR_COMPACT_CARRIER = "pref_status_bar_compact_carrier";
 
     private static final String PREF_FORCE_PLMN_DISPLAY = "pref_status_bar_force_plmn_display";
+
+    private static final String ONEPERC_BATT_PERSIST_PROP = "persist.sys.one_percent_batt";
+
+    private static final String ONEPERC_BATT_DEFAULT = "0";
 
     private ListPreference mStatusBarAmPm;
 
     private CheckBoxPreference mStatusBarClock;
 
     private CheckBoxPreference mStatusBarCmBattery;
+
+    private CheckBoxPreference mStatusBarOnepercBattery;
 
     private CheckBoxPreference mStatusBarCompactCarrier;
 
@@ -63,6 +72,10 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
         mStatusBarCompactCarrier = (CheckBoxPreference) prefSet.findPreference(PREF_STATUS_BAR_COMPACT_CARRIER);
         mStatusBarCmBattery = (CheckBoxPreference) prefSet
                 .findPreference(PREF_STATUS_BAR_CM_BATTERY);
+        mStatusBarOnepercBattery = (CheckBoxPreference) prefSet
+                .findPreference(PREF_STATUS_BAR_ONEPERC_BATTERY);
+        String onepercBattery = SystemProperties.get(ONEPERC_BATT_PERSIST_PROP, ONEPERC_BATT_DEFAULT);
+        mStatusBarOnepercBattery.setChecked("1".equals(onepercBattery));
         mStatusBarForcePlmnDisplay = (CheckBoxPreference) prefSet.findPreference(PREF_FORCE_PLMN_DISPLAY);
 
         mStatusBarClock.setChecked((Settings.System.getInt(getContentResolver(),
@@ -104,6 +117,10 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
             value = mStatusBarCmBattery.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.STATUS_BAR_CM_BATTERY,
                     value ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarOnepercBattery) {
+            SystemProperties.set(ONEPERC_BATT_PERSIST_PROP,
+                    mStatusBarOnepercBattery.isChecked() ? "1" : "0");
             return true;
         } else if (preference == mStatusBarCompactCarrier) {
             value = mStatusBarCompactCarrier.isChecked();

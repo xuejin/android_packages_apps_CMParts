@@ -168,12 +168,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.NotificationsActivity"
-            android:label="@string/title_notifications_color_tweaks">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
         <activity android:name=".activities.PerformanceSettingsActivity"
             android:label="@string/performance_settings_title">
             <intent-filter>
@@ -288,14 +282,6 @@
             android:label="@string/changelog_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".activities.PermissionsActivity"
-            android:label="@string/permissions_settings_title_head">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.cyanogenmod.cmparts.SHORTCUT" />
             </intent-filter>
         </activity>
 
