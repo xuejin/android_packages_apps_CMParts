@@ -29,6 +29,10 @@
 			android:title="@string/ui_status_bar_force_plmn_display"
 			android:summary="@string/ui_status_bar_force_plmn_display_summary"
 			android:defaultValue="false" />
+		<CheckBoxPreference android:key="pref_status_bar_brightness_control"
+			android:title="@string/ui_status_bar_toggle_brightness"
+			android:summary="@string/ui_status_bar_toggle_brightness_summary"
+			android:defaultValue="false" />
 	</PreferenceCategory>
 
 </PreferenceScreen>
