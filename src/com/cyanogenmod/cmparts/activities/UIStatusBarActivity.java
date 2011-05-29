@@ -47,6 +47,8 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
 
     private static final String ONEPERC_BATT_DEFAULT = "0";
 
+    private static final String PREF_STATUS_BAR_BRIGHTNESS_CONTROL = "pref_status_bar_brightness_control";
+
     private ListPreference mStatusBarAmPm;
 
     private CheckBoxPreference mStatusBarClock;
@@ -58,6 +60,8 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
     private CheckBoxPreference mStatusBarCompactCarrier;
 
     private CheckBoxPreference mStatusBarForcePlmnDisplay;
+
+    private CheckBoxPreference mStatusBarBrightnessControl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,6 +81,7 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
         String onepercBattery = SystemProperties.get(ONEPERC_BATT_PERSIST_PROP, ONEPERC_BATT_DEFAULT);
         mStatusBarOnepercBattery.setChecked("1".equals(onepercBattery));
         mStatusBarForcePlmnDisplay = (CheckBoxPreference) prefSet.findPreference(PREF_FORCE_PLMN_DISPLAY);
+        mStatusBarBrightnessControl = (CheckBoxPreference) prefSet.findPreference(PREF_STATUS_BAR_BRIGHTNESS_CONTROL);
 
         mStatusBarClock.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CLOCK, 1) == 1));
@@ -86,6 +91,8 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
                 Settings.System.STATUS_BAR_COMPACT_CARRIER, 0) == 1));
         mStatusBarForcePlmnDisplay.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_FORCE_PLMN_DISPLAY, 0) == 1));
+        mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.STATUS_BAR_BRIGHTNESS_TOGGLE, 0) == 1));
 
         mStatusBarAmPm = (ListPreference) prefSet.findPreference(PREF_STATUS_BAR_AM_PM);
         int statusBarAmPm = Settings.System.getInt(getContentResolver(),
@@ -130,6 +137,10 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
         } else if (preference == mStatusBarForcePlmnDisplay) {
             value = mStatusBarForcePlmnDisplay.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.STATUS_BAR_FORCE_PLMN_DISPLAY,
+                    value ? 1 : 0);
+        } else if (preference == mStatusBarBrightnessControl) {
+            value = mStatusBarBrightnessControl.isChecked();
+            Settings.System.putInt(getContentResolver(), Settings.System.STATUS_BAR_BRIGHTNESS_TOGGLE,
                     value ? 1 : 0);
             return true;
         }
