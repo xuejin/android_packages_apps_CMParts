@@ -102,6 +102,8 @@
     <string name="ui_status_bar_clock_summary">Die Uhrzeit wird nicht angezeigt, wenn deaktiviert</string>
     <string name="ui_status_bar_cm_battery_title">Batterie-Prozentanzeige</string>
     <string name="ui_status_bar_cm_battery_summary">Zeige den Ladezustand der Batterie in Prozent und ein kleineres Batteriesymbol. Ausschalten bei Anzeigeproblemen mit anderen Themes</string>
+    <string name="ui_status_bar_oneperc_battery_title">Batterie in 1% Schritten</string>
+    <string name="ui_status_bar_oneperc_battery_summary">Zeigt den Ladezustand der Batterie in 1% Schritten. Kann Probleme mit Batterien und Ladegeräten von Fremdherstellern verursachen. (erfordert Neustart)</string>
     <string name="ui_status_bar_compact_carrier_title">Kompakter Betreibername</string>
     <string name="ui_status_bar_compact_carrier_summary">Alternatives Layout des Benachrichtigungsbereichs mit kürzerem Betreibernamen.</string>
     <string name="ui_status_bar_force_plmn_display">Erzwinge Anzeige des PLMN</string>
@@ -176,6 +178,59 @@
     <string name="trackball_array_error">Leider ist ein Fehler aufgetreten. Dieses Paket ist in die Kategorie \"Verschiedenes\" verschoben worden.</string>
     <string name="trackball_color_notice_title">HINWEIS:</string>
     <string name="trackball_color_notice_summary">Auf manchen Geräten sind nicht alle Farben von der LED darstellbar.</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Trackball Settings : Warning dialog -->
     <string name="notification_battery_warning_title">WARNUNG: Kann Batterieentladung beschleunigen</string>
@@ -256,6 +311,27 @@
     <string name="pref_input_custom_search_app_activity_title">App festlegen</string>
     <string name="pref_input_custom_long_search_app_toggle_title">Suchen-Taste gedrückt halten</string>
     <string name="pref_input_custom_long_search_app_toggle_summary">Starten einer festgelegten Anwendung beim Gedrückt halten der Suchen-Taste</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Long Press Home -->
     <string name="recent_apps_show_title">Titel für letzte Apps zeigen</string>
@@ -519,6 +595,18 @@
 
     <string name="cmstats_title">Anonyme Statistiken</string>
     <string name="cmstats_summary">Helfe CyanogenMod zu verbessern durch das anonyme Berichten von Statistiken über dein Gerät</string>
+
+
+
+
+
+
+
+
+
+
+
+
 
     <string name="user_defined_key1">Schnelltaste 1</string>
     <string name="user_defined_key2">Schnelltaste 2</string>
