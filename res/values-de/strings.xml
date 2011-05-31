@@ -102,8 +102,11 @@
     <string name="ui_status_bar_clock_summary">Die Uhrzeit wird nicht angezeigt, wenn deaktiviert</string>
     <string name="ui_status_bar_cm_battery_title">Batterie-Prozentanzeige</string>
     <string name="ui_status_bar_cm_battery_summary">Zeige den Ladezustand der Batterie in Prozent und ein kleineres Batteriesymbol. Ausschalten bei Anzeigeproblemen mit anderen Themes</string>
+<<<<<<< HEAD
     <string name="ui_status_bar_oneperc_battery_title">Batterie in 1% Schritten</string>
     <string name="ui_status_bar_oneperc_battery_summary">Zeigt den Ladezustand der Batterie in 1% Schritten. Kann Probleme mit Batterien und Ladegeräten von Fremdherstellern verursachen. (erfordert Neustart)</string>
+=======
+>>>>>>> upstream/gingerbread
     <string name="ui_status_bar_compact_carrier_title">Kompakter Betreibername</string>
     <string name="ui_status_bar_compact_carrier_summary">Alternatives Layout des Benachrichtigungsbereichs mit kürzerem Betreibernamen.</string>
     <string name="ui_status_bar_force_plmn_display">Erzwinge Anzeige des PLMN</string>
@@ -311,6 +314,7 @@
     <string name="pref_input_custom_search_app_activity_title">App festlegen</string>
     <string name="pref_input_custom_long_search_app_toggle_title">Suchen-Taste gedrückt halten</string>
     <string name="pref_input_custom_long_search_app_toggle_summary">Starten einer festgelegten Anwendung beim Gedrückt halten der Suchen-Taste</string>
+
 
 
 
