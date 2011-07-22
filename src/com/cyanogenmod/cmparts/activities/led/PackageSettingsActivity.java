@@ -58,6 +58,8 @@ public class PackageSettingsActivity extends PreferenceActivity implements
     private Set<String> mCategories;
     private SharedPreferences mPrefs;
 
+    private int[] mColorList;
+
     private ListPreference mCategoryPref;
     private ListPreference mForceModePref;
     private ListPreference mColorPref;
@@ -97,6 +99,13 @@ public class PackageSettingsActivity extends PreferenceActivity implements
             PreferenceScreen screen = getPreferenceScreen();
             screen.removePreference(mBlinkPref);
             screen.removePreference(mCustomPref);
+        }
+
+        String[] colorList = getResources().getStringArray(
+                com.android.internal.R.array.notification_led_random_color_set);
+        mColorList = new int[colorList.length];
+        for (int i = 0; i < colorList.length; i++) {
+            mColorList[i] = Color.parseColor(colorList[i]);
         }
 
         loadInitialData();
@@ -166,13 +175,9 @@ public class PackageSettingsActivity extends PreferenceActivity implements
         return pref.getValue();
     }
 
-    private static String[] sColorList = {
-        "green", "white", "red", "blue", "yellow", "cyan", "#800080", "#ffc0cb", "#ffa500",
-        "#add8e6"
-    };
-
     private void doTest() {
-        final int alwaysPulse = getInt(Settings.System.TRACKBALL_SCREEN_ON, 0);
+        final int alwaysPulse = Settings.System.getInt(
+                getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 0);
         String color = findSetting(mColorPref, EXTRA_COLOR);
         String blink = findSetting(mBlinkPref, EXTRA_BLINK);
 
@@ -201,14 +206,14 @@ public class PackageSettingsActivity extends PreferenceActivity implements
                 getResources().getColor(com.android.internal.R.color.config_defaultNotificationColor);
         } else if (color.equals(COLOR_RANDOM)) {
             Random generator = new Random();
-            int x = generator.nextInt(sColorList.length - 1);
-            notification.ledARGB = Color.parseColor(sColorList[x]);
+            int x = generator.nextInt(mColorList.length - 1);
+            notification.ledARGB = mColorList[x];
         } else {
             notification.ledARGB = Color.parseColor(color);
         }
 
         if (alwaysPulse != 1) {
-            putInt(Settings.System.TRACKBALL_SCREEN_ON, 1);
+            Settings.System.putInt(getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 1);
         }
         nm.notify(NOTIFICATION_ID, notification);
 
@@ -219,7 +224,7 @@ public class PackageSettingsActivity extends PreferenceActivity implements
             public void onClick(DialogInterface dialog, int which) {
                 nm.cancel(NOTIFICATION_ID);
                 if (alwaysPulse != 1) {
-                    putInt(Settings.System.TRACKBALL_SCREEN_ON, 0);
+                    Settings.System.putInt(getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 0);
                 }
             }
         });
@@ -278,29 +283,17 @@ public class PackageSettingsActivity extends PreferenceActivity implements
         setResult(RESULT_OK, mResultIntent);
     }
 
-    private boolean putInt(String option, int value) {
-        return Settings.System.putInt(getContentResolver(), option, value);
-    }
-
-    private int getInt(String option, int defValue) {
-        return Settings.System.getInt(getContentResolver(), option, defValue);
-    }
-
     private ColorPickerDialog.OnColorChangedListener mPackageColorListener =
             new ColorPickerDialog.OnColorChangedListener() {
-
-        private String convertToARGB(int color) {
-            return String.format("#%02x%02x%02x%02x", Color.alpha(color),
-                    Color.red(color), Color.green(color), Color.blue(color));
-        }
-
         @Override
         public void colorUpdate(int color) {
         }
 
         @Override
         public void colorChanged(int color) {
-            updateResult(EXTRA_COLOR, convertToARGB(color));
+            String colorString = String.format("#%02x%02x%02x",
+                    Color.red(color), Color.green(color), Color.blue(color));
+            updateResult(EXTRA_COLOR, colorString);
         }
     };
 }

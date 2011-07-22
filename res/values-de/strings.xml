@@ -192,6 +192,7 @@
     <string name="trackball_category_remove_title">Kategorie entfernen</string>
     <string name="trackball_category_remove_summary">Eine Kategorie aus der Liste entfernen</string>
     <string name="trackball_reset_all">Alle Farben und Kategorien zurücksetzen.</string>
+
     <string name="trackball_color_notice_title">HINWEIS:</string>
     <string name="trackball_color_notice_summary">Auf manchen Geräten sind nicht alle Farben von der LED darstellbar.</string>
 
