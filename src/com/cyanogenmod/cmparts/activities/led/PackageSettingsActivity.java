@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -32,7 +33,6 @@ import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.text.TextUtils;
-
 import com.cyanogenmod.cmparts.R;
 import com.cyanogenmod.cmparts.activities.ColorPickerDialog;
 
@@ -285,8 +285,44 @@ public class PackageSettingsActivity extends PreferenceActivity implements
 
     private ColorPickerDialog.OnColorChangedListener mPackageColorListener =
             new ColorPickerDialog.OnColorChangedListener() {
+
+        private NotificationManager mNM = null;
+        private Handler mHandler = new Handler();
+        private int mAlwaysPulse = -1;
+
+        private Runnable mCancelRunnable = new Runnable() {
+            @Override
+            public void run() {
+                mNM.cancel(NOTIFICATION_ID);
+                if (mAlwaysPulse == 0) {
+                    Settings.System.putInt(getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 0);
+                    mAlwaysPulse = -1;
+                }
+            }
+        };
+
         @Override
         public void colorUpdate(int color) {
+            final Notification notification = new Notification();
+
+            notification.flags |= Notification.FLAG_SHOW_LIGHTS;
+            notification.ledOnMS = 500;
+            notification.ledOffMS = 0;
+            notification.ledARGB = color;
+
+            if (mNM == null) {
+                mNM = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            }
+
+            if (mAlwaysPulse == -1) {
+                mAlwaysPulse = Settings.System.getInt(
+                        getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 0);
+                Settings.System.putInt(getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 1);
+            }
+
+            mHandler.removeCallbacks(mCancelRunnable);
+            mNM.notify(NOTIFICATION_ID, notification);
+            mHandler.postDelayed(mCancelRunnable, 1000);
         }
 
         @Override
@@ -294,6 +330,9 @@ public class PackageSettingsActivity extends PreferenceActivity implements
             String colorString = String.format("#%02x%02x%02x",
                     Color.red(color), Color.green(color), Color.blue(color));
             updateResult(EXTRA_COLOR, colorString);
+
+            mHandler.removeCallbacks(mCancelRunnable);
+            mHandler.post(mCancelRunnable);
         }
     };
 }
