@@ -19,6 +19,7 @@ package com.cyanogenmod.cmparts.activities.led;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -69,7 +70,21 @@ public class PackageSettingsActivity extends PreferenceActivity implements
     private Preference mResetPref;
 
     private Intent mResultIntent = new Intent(Intent.ACTION_EDIT);
+
+    private Handler mHandler = new Handler();
+    private NotificationManager mNM;
     private static final int NOTIFICATION_ID = 400;
+    private int mAlwaysPulseBeforeTest = -1;
+    private int mSuccessionBeforeTest = -1;
+    private int mBlendBeforeTest = -1;
+
+    private Runnable mCancelTestRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mNM.cancel(NOTIFICATION_ID);
+            cleanupSettingsAfterTest();
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,6 +122,8 @@ public class PackageSettingsActivity extends PreferenceActivity implements
         for (int i = 0; i < colorList.length; i++) {
             mColorList[i] = Color.parseColor(colorList[i]);
         }
+
+        mNM = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         loadInitialData();
     }
@@ -175,6 +192,40 @@ public class PackageSettingsActivity extends PreferenceActivity implements
         return pref.getValue();
     }
 
+    private void prepareSettingsForTest() {
+        ContentResolver cr = getContentResolver();
+        if (mAlwaysPulseBeforeTest == -1) {
+            mAlwaysPulseBeforeTest = Settings.System.getInt(cr, Settings.System.TRACKBALL_SCREEN_ON, 0);
+            Settings.System.putInt(cr, Settings.System.TRACKBALL_SCREEN_ON, 1);
+        }
+        if (mBlendBeforeTest == -1) {
+            mBlendBeforeTest = Settings.System.getInt(cr,
+                    Settings.System.TRACKBALL_NOTIFICATION_BLEND_COLOR, 0);
+            Settings.System.putInt(cr, Settings.System.TRACKBALL_NOTIFICATION_BLEND_COLOR, 0);
+        }
+        if (mSuccessionBeforeTest == -1) {
+            mSuccessionBeforeTest = Settings.System.getInt(cr,
+                    Settings.System.TRACKBALL_NOTIFICATION_SUCCESSION, 0);
+            Settings.System.putInt(cr, Settings.System.TRACKBALL_NOTIFICATION_SUCCESSION, 0);
+        }
+    }
+
+    private void cleanupSettingsAfterTest() {
+        ContentResolver cr = getContentResolver();
+        if (mAlwaysPulseBeforeTest == 0) {
+            Settings.System.putInt(cr, Settings.System.TRACKBALL_SCREEN_ON, 0);
+        }
+        mAlwaysPulseBeforeTest = -1;
+        if (mBlendBeforeTest == 1) {
+            Settings.System.putInt(cr, Settings.System.TRACKBALL_NOTIFICATION_BLEND_COLOR, 1);
+        }
+        mBlendBeforeTest = -1;
+        if (mSuccessionBeforeTest == 1) {
+            Settings.System.putInt(cr, Settings.System.TRACKBALL_NOTIFICATION_SUCCESSION, 1);
+        }
+        mSuccessionBeforeTest = -1;
+    }
+
     private void doTest() {
         final int alwaysPulse = Settings.System.getInt(
                 getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 0);
@@ -186,8 +237,6 @@ public class PackageSettingsActivity extends PreferenceActivity implements
         }
 
         final Notification notification = new Notification();
-        final NotificationManager nm =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notification.flags |= Notification.FLAG_SHOW_LIGHTS;
 
@@ -212,20 +261,16 @@ public class PackageSettingsActivity extends PreferenceActivity implements
             notification.ledARGB = Color.parseColor(color);
         }
 
-        if (alwaysPulse != 1) {
-            Settings.System.putInt(getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 1);
-        }
-        nm.notify(NOTIFICATION_ID, notification);
+        prepareSettingsForTest();
+        mHandler.removeCallbacks(mCancelTestRunnable);
+        mNM.notify(NOTIFICATION_ID, notification);
 
         AlertDialog.Builder endFlash = new AlertDialog.Builder(this);
         endFlash.setMessage(R.string.dialog_clear_flash);
         endFlash.setCancelable(false);
         endFlash.setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                nm.cancel(NOTIFICATION_ID);
-                if (alwaysPulse != 1) {
-                    Settings.System.putInt(getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 0);
-                }
+                mHandler.post(mCancelTestRunnable);
             }
         });
         endFlash.show();
@@ -285,22 +330,6 @@ public class PackageSettingsActivity extends PreferenceActivity implements
 
     private ColorPickerDialog.OnColorChangedListener mPackageColorListener =
             new ColorPickerDialog.OnColorChangedListener() {
-
-        private NotificationManager mNM = null;
-        private Handler mHandler = new Handler();
-        private int mAlwaysPulse = -1;
-
-        private Runnable mCancelRunnable = new Runnable() {
-            @Override
-            public void run() {
-                mNM.cancel(NOTIFICATION_ID);
-                if (mAlwaysPulse == 0) {
-                    Settings.System.putInt(getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 0);
-                    mAlwaysPulse = -1;
-                }
-            }
-        };
-
         @Override
         public void colorUpdate(int color) {
             final Notification notification = new Notification();
@@ -310,19 +339,10 @@ public class PackageSettingsActivity extends PreferenceActivity implements
             notification.ledOffMS = 0;
             notification.ledARGB = color;
 
-            if (mNM == null) {
-                mNM = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            }
-
-            if (mAlwaysPulse == -1) {
-                mAlwaysPulse = Settings.System.getInt(
-                        getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 0);
-                Settings.System.putInt(getContentResolver(), Settings.System.TRACKBALL_SCREEN_ON, 1);
-            }
-
-            mHandler.removeCallbacks(mCancelRunnable);
+            prepareSettingsForTest();
+            mHandler.removeCallbacks(mCancelTestRunnable);
             mNM.notify(NOTIFICATION_ID, notification);
-            mHandler.postDelayed(mCancelRunnable, 1000);
+            mHandler.postDelayed(mCancelTestRunnable, 1000);
         }
 
         @Override
@@ -331,8 +351,8 @@ public class PackageSettingsActivity extends PreferenceActivity implements
                     Color.red(color), Color.green(color), Color.blue(color));
             updateResult(EXTRA_COLOR, colorString);
 
-            mHandler.removeCallbacks(mCancelRunnable);
-            mHandler.post(mCancelRunnable);
+            mHandler.removeCallbacks(mCancelTestRunnable);
+            mHandler.post(mCancelTestRunnable);
         }
     };
 }
