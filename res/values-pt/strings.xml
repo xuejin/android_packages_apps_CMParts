@@ -532,6 +532,7 @@
     <string name="cpu_max_freq_summary">Frequência máxima da CPU\nAtualmente: %s</string>
     <string name="cpu_set_on_boot">Definir na inicialização</string>
     <string name="cpu_set_on_boot_summary">Restaura as configurações de CPU na inicilização</string>
+
     <string name="gestures_already_present">Aviso: Um gesto similar está associado a outra ação!</string>
     <string name="gestures_flashlight">Lanterna</string>
     <string name="pref_lockscreen_gestures_color_title">Cor dos gestos</string>
@@ -551,6 +552,21 @@
     <string name="title_expanded_hide_onchange">Esconder ao mudar</string>
     <string name="summary_expanded_hide_onchange">Esconde a notificação após acionar um botão do widget</string>
     <string name="trackball_color_notice_summary">Não são todas as cores disponíveis para todos dispositivos.</string>
+
+    <!-- Trackball color entries -->
+    <string name="trackball_color_entry_green">Verde</string>
+    <string name="trackball_color_entry_white">Branco</string>
+    <string name="trackball_color_entry_red">Vermelho</string>
+    <string name="trackball_color_entry_blue">Azul</string>
+    <string name="trackball_color_entry_yellow">Amarelo</string>
+    <string name="trackball_color_entry_cyan">Ciano</string>
+    <string name="trackball_color_entry_magenta">Magenta</string>
+    <string name="trackball_color_entry_pink">Rosa</string>
+    <string name="trackball_color_entry_orange">Laranja</string>
+    <string name="trackball_color_entry_light_blue">Azul Claro</string>
+    <string name="trackball_color_entry_random">Aleatório</string>
+    <string name="trackball_color_entry_none">Nenhum</string>
+    <string name="trackball_color_entry_amber">Amarelo</string>
     <string name="pref_overscroll_weight_title">Peso de sobrerolagem</string>
     <string name="pref_overscroll_weight_summary">Selecione o peso de sobrerolagem</string>
     <string name="pref_overscroll_summary">Escolhe o tipo de sobrerolagem</string>
@@ -635,4 +651,14 @@
     <string name="pref_long_press_menu_summary">Personalizar pressionar continuamente o menu</string>
     <string name="expanded_haptic_feedback_title">Vibração</string>
     <string name="expanded_haptic_feedback_summary">Habilitar/Desabilitar vibração</string>
+    <string name="pref_lockscreen_custom_background_title">Escolha o plano de fundo</string>
+    <string name="pref_lockscreen_custom_background_dialog_title">Escolha o plano de fundo</string>
+    <string name="pref_lockscreen_custom_background_summary">Escolha uma imagem ou cor como plano de fundo da tela de bloqueio</string>
+    <string name="pref_lockscreen_disable_on_security_summary">Desabilitar a tela de bloqueio se a tela de bloqueio de segurança estiver habilitada</string>
+    <string name="pref_lockscreen_disable_on_security_title">Desabilitar tela de bloqueio</string>
+    <string name="pref_lockscreen_custom_background_summary_color">Atual : Cor</string>
+    <string name="pref_lockscreen_custom_background_summary_image">Atual : Imagem</string>
+    <string name="pref_lockscreen_custom_background_summary_default">Atual : Padrão</string>
+    <string name="pref_lockscreen_background_result_successful">Plano de fundo foi modificado</string>
+    <string name="pref_lockscreen_background_result_not_successful">Plano de fundo não foi modificado</string>
 </resources>

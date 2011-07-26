@@ -112,6 +112,11 @@
     <string name="ui_status_bar_toggle_brightness">StatusBar brightness control</string>
     <string name="ui_status_bar_toggle_brightness_summary">Allows adjusting of brightness by sliding across statusbar.</string>
     <string name="ui_status_bar_toggle_info">Automatic brightness is enabled</string>
+    <string name="ui_status_bar_cm_signal_text_title">Alternate signal display</string>
+    <string name="ui_status_bar_cm_signal_text_summary">Show dBm value instead of signal bars</string>
+    <string name="ui_status_bar_cm_signal_text_show_bars">Signal bars</string>
+    <string name="ui_status_bar_cm_signal_text_show_text">Signal text</string>
+    <string name="ui_status_bar_cm_signal_text_show_text_dbm">Signal text w/dBm</string>
 
     <!-- User interface : LED Notifications -->
     <string name="trackball_title">LED notifications</string>
@@ -132,10 +137,22 @@
     <!-- User interface : Lock Screen -->
     <string name="ui_lockscreen_title">Screen lock settings</string>
     <string name="pref_lockscreen_delay_title">Delay</string>
-    <string name="pref_lockscreen_timeout_lock_delay">Screen timeout delay</string>
-    <string name="pref_lockscreen_screenoff_lock_delay">Screen turned off delay</string>
-    <string name="pref_lockscreen_timeout_lock_delay_summary">How long to delay before enabling screen lock when screen times out</string>
-    <string name="pref_lockscreen_screenoff_lock_delay_summary">How long to delay before enabling screen lock when screen is turned off</string>
+    <string name="pref_lockscreen_security_title">Security Lock</string>
+    <string name="pref_lockscreen_security_delay_note_title">Note</string>
+    <string name="pref_lockscreen_security_delay_note_summary">While screen lock security is set to NONE only the security lock delay settings will be used</string>
+    <string name="pref_lockscreen_security_timeout_lock_delay">Screen timeout delay</string>
+    <string name="pref_lockscreen_security_screenoff_lock_delay">Screen turned off delay</string>
+    <string name="pref_lockscreen_security_timeout_lock_delay_summary">How long to delay before enabling screen security lock when screen times out</string>
+    <string name="pref_lockscreen_security_screenoff_lock_delay_summary">How long to delay before enabling screen security lock when screen is turned off</string>
+    <string name="pref_lockscreen_slide_title">Slide Lock</string>
+    <string name="pref_lockscreen_slide_delay_note_title">Note</string>
+    <string name="pref_lockscreen_slide_delay_note_summary">Even if enabled, the unsecured slide lock will only appear if the security lock delay is longer than the slide lock delay</string>
+    <string name="pref_lockscreen_slide_delay_title">Enable slide lock delay</string>
+    <string name="pref_lockscreen_slide_delay_summary">Shows screen slide lock on a separate delay before showing security lock</string>
+    <string name="pref_lockscreen_slide_timeout_lock_delay">Screen timeout delay</string>
+    <string name="pref_lockscreen_slide_screenoff_lock_delay">Screen turned off delay</string>
+    <string name="pref_lockscreen_slide_timeout_lock_delay_summary">How long to delay before enabling screen slide lock when screen times out</string>
+    <string name="pref_lockscreen_slide_screenoff_lock_delay_summary">How long to delay before enabling screen slide lock when screen is turned off</string>
 
     <!-- Color Picker -->
     <string name="title_color_picker">Pick a color</string>
@@ -182,6 +199,21 @@
     <string name="trackball_array_error">Unfortunately there was an array error. This package has been forced into the Miscellaneous category.</string>
     <string name="trackball_color_notice_title">NOTE:</string>
     <string name="trackball_color_notice_summary">Not all colors will display on all devices</string>
+
+    <!-- Trackball color entries -->
+    <string name="trackball_color_entry_green">Green</string>
+    <string name="trackball_color_entry_white">White</string>
+    <string name="trackball_color_entry_red">Red</string>
+    <string name="trackball_color_entry_blue">Blue</string>
+    <string name="trackball_color_entry_yellow">Yellow</string>
+    <string name="trackball_color_entry_cyan">Cyan</string>
+    <string name="trackball_color_entry_magenta">Magenta</string>
+    <string name="trackball_color_entry_pink">Pink</string>
+    <string name="trackball_color_entry_orange">Orange</string>
+    <string name="trackball_color_entry_light_blue">Light Blue</string>
+    <string name="trackball_color_entry_random">Random</string>
+    <string name="trackball_color_entry_none">None</string>
+    <string name="trackball_color_entry_amber">Amber</string>
 
     <!-- Trackball Settings : Warning dialog -->
     <string name="notification_battery_warning_title">WARNING: May cause battery drain</string>
@@ -231,6 +263,11 @@
     <string name="pref_lockscreen_custom_background_title">Choose background</string>
     <string name="pref_lockscreen_custom_background_dialog_title">Choose background</string>
     <string name="pref_lockscreen_custom_background_summary">Choose image or color as lockscreen background</string>
+    <string name="pref_lockscreen_custom_background_summary_color">Current : Color</string>
+    <string name="pref_lockscreen_custom_background_summary_image">Current : Image</string>
+    <string name="pref_lockscreen_custom_background_summary_default">Current : Default</string>
+    <string name="pref_lockscreen_background_result_successful">Background changed</string>
+    <string name="pref_lockscreen_background_result_not_successful">Background not changed</string>
     <string name="pref_lockscreen_custom_icon_style_title">Use application icon for custom app</string>
     <string name="pref_lockscreen_custom_icon_style_summary">Uses application icon instead of CM icon for custom app starter</string>
     <string name="pref_lockscreen_rotary_unlock_down_title">Drag down to unlock</string>
