@@ -92,6 +92,9 @@
     <string name="pref_rotation_180_title">180 degrees</string>
     <string name="pref_rotation_270_title">270 degrees</string>
 
+    <string name="pref_omap_dss_mode_title">DSI kernel bug workaround</string>
+    <string name="pref_omap_dss_mode_summary">Sets OMAP DSS update mode to automatic. Causes slight display tearing but prevents display freezes and occasional kernel panic.</string>
+
     <string name="pref_na_on_plug_title">Keep display off on plug</string>
     <string name="pref_na_on_plug_summary">When enabled, display will not turn on automatically when phone is plugged to usb or power (useful e.g. for solar power adapters).</string>
 
@@ -290,6 +293,8 @@
     <string name="pref_dock_observer_off_summary">No action on magnets, useful for users of carrying cases with magnetic closure</string>
     <string name="pref_keypad_type_title">Keyboard layout</string>
     <string name="pref_keypad_type_summary">Set hardware keyboard layout - qwerty, qwertz, azerty... (requires reboot)</string>
+    <string name="pref_qtouch_num_title">Multitouch</string>
+    <string name="pref_qtouch_num_summary">Set number of distinct touches to be recognized (may require screen off and on to become effective and first touch after first screen on may be ignored)</string>
     <string name="lockscreen_widgets_note_title">Note</string>
     <string name="lockscreen_widgets_note_summary">Choosing minimalistic lense style hides all widgets except music control. Yet below options are not unset to allow easy switching to other styles</string>
 
@@ -392,6 +397,10 @@
     <string name="pref_purgeable_assets_title">Allow purging of assets</string>
     <string name="pref_purgeable_assets_summary">System can free more RAM when needed if asset bitmap memory can be reclaimed (requires reboot)</string>
 
+    <!-- Performance Settings : Logger -->
+    <string name="pref_logger_title">Enable logger</string>
+    <string name="pref_logger_summary">Enable logging to /cache/logger</string>
+
     <!-- Performance Settings : VM Heap Size -->
     <string name="pref_heapsize_title">VM heap size</string>
     <string name="pref_heapsize_summary">Maximum amount of memory per VM heap (requires reboot)</string>
@@ -424,6 +433,7 @@
     <string name="buttons_title">Buttons</string>
     <string name="dock_title">Dock</string>
     <string name="keypad_title">Keyboard</string>
+    <string name="qtouch_title">Touchscreen</string>
 
     <!-- UI Settings : Power off prompt -->
     <string name="pref_power_prompt_title">Power prompt</string>
