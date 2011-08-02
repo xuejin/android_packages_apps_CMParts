@@ -65,7 +65,7 @@ public class InputActivity extends PreferenceActivity implements
 
     private static final String QTOUCH_NUM_PREF = "pref_qtouch_num";
 
-    private static final String QTOUCH_NUM_PERSIST_PROP = "persist.qtouch.num";
+    private static final String QTOUCH_NUM_PERSIST_PROP = "persist.sys.qtouch_num";
 
     private static final String QTOUCH_NUM_DEFAULT = "2";
 
