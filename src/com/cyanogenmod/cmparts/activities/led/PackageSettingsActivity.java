@@ -290,12 +290,8 @@ public class PackageSettingsActivity extends PreferenceActivity implements
             new ColorPickerDialog.OnColorChangedListener() {
 
         private String convertToARGB(int color) {
-            String alpha = Integer.toHexString(Color.alpha(color));
-            String red = Integer.toHexString(Color.red(color));
-            String green = Integer.toHexString(Color.green(color));
-            String blue = Integer.toHexString(Color.blue(color));
-
-            return String.format("#%02x%02x%02x%02x", alpha, red, green, blue);
+            return String.format("#%02x%02x%02x%02x", Color.alpha(color),
+                    Color.red(color), Color.green(color), Color.blue(color));
         }
 
         @Override
