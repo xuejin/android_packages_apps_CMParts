@@ -313,7 +313,7 @@
     <string name="pref_keypad_type_title">Tastaturbelegung</string>
     <string name="pref_keypad_type_summary">Einstellen der Tastaturbelegung - qwerty, qwertz, azerty... (erfordert Neustart)</string>
     <string name="pref_qtouch_num_title">Multitouch</string>
-    <string name="pref_qtouch_num_summary">Festlegen der Anzahl der erkannten Touchepunkte (Kann ein Ein- und Ausschalten des Displays erfordern um aktiviert zu werden. Der erste Touch nach Einschalten des Displays kann ignoriert werden)</string>
+    <string name="pref_qtouch_num_summary">Festlegen der Anzahl der erkannten Touchpunkte (Kann ein Ein- und Ausschalten des Displays erfordern um aktiviert zu werden. Der erste Touch nach Einschalten des Displays kann ignoriert werden)</string>
     <string name="lockscreen_widgets_note_title">Hinweis</string>
     <string name="lockscreen_widgets_note_summary">Beim Stil \"Lense\" werden alle Widgets ausgeblendet mit Ausnahme der Musiksteuerung. Für einfacheres Umstellen zwischen den Locksreen-Stilen bleiben die weiteren Optionen dennoch aktiviert.</string>
 
