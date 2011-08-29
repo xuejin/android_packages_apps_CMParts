@@ -52,8 +52,7 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
 
     private static final String ONEPERC_BATT_DEFAULT = "0";
 
-    private static final String PREF_STATUS_BAR_BRIGHTNESS_CONTROL =
-            "pref_status_bar_brightness_control";
+    private static final String PREF_STATUS_BAR_BRIGHTNESS_CONTROL = "pref_status_bar_brightness_control";
 
     private static final String PREF_STATUS_BAR_CM_SIGNAL = "pref_status_bar_cm_signal";
 
@@ -100,8 +99,7 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
         mStatusBarForcePlmnDisplay = (CheckBoxPreference) prefSet.findPreference(PREF_FORCE_PLMN_DISPLAY);
         mStatusBarBrightnessControl = (CheckBoxPreference) prefSet
                 .findPreference(PREF_STATUS_BAR_BRIGHTNESS_CONTROL);
-        mStatusBarHeadset = (CheckBoxPreference) prefSet
-                .findPreference(PREF_STATUS_BAR_HEADSET);
+        mStatusBarHeadset = (CheckBoxPreference) prefSet.findPreference(PREF_STATUS_BAR_HEADSET);
 
         mStatusBarClock.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CLOCK, 1) == 1));
@@ -115,8 +113,8 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
                 Settings.System.STATUS_BAR_HEADSET, 1) == 1));
 
         try {
-            if (Settings.System.getInt(getContentResolver(), 
-                    Settings.System.SCREEN_BRIGHTNESS_MODE) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
+            if (Settings.System
+                    .getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
                 mStatusBarBrightnessControl.setEnabled(false);
                 mStatusBarBrightnessControl.setSummary(R.string.ui_status_bar_toggle_info);
             }
