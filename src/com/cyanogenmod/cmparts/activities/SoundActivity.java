@@ -67,7 +67,7 @@ public class SoundActivity extends PreferenceActivity implements OnPreferenceCha
 
     private static final String ALARMS_LIMITVOL = "alarm-limitvol";
 
-    private static final String CAMERA_SHUTTER_DISABLE = "persist.camera.shutter.disable";
+    private static final String CAMERA_SHUTTER_DISABLE = "persist.sys.cam_shutter_disable";
 
     private static final String PREFIX = "persist.sys.";
 

@@ -32,7 +32,7 @@
 		</PreferenceScreen>
 
 		<!-- Disable shutter sound -->
-		<CheckBoxPreference android:key="persist.camera.shutter.disable"
+		<CheckBoxPreference android:key="persist.sys.cam_shutter_disable"
 			android:title="@string/sound_camera_shutter_disable_title"
 			android:summaryOn="@string/sound_camera_shutter_disable_summary_on"
 			android:summaryOff="@string/sound_camera_shutter_disable_summary_off"
