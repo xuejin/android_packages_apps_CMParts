@@ -103,23 +103,15 @@
     <string name="ui_status_bar_clock_title">Zeige Uhr</string>
     <string name="ui_status_bar_clock_summary">Die Uhrzeit wird nicht angezeigt, wenn deaktiviert</string>
     <string name="ui_status_bar_cm_battery_title">Batterie-Prozentanzeige</string>
-<<<<<<< HEAD
-    <string name="ui_status_bar_cm_battery_summary">Zeige den Ladezustand der Batterie in Prozent und ein kleineres Batteriesymbol. Ausschalten bei Anzeigeproblemen mit anderen Themes</string>
+    <string name="ui_status_bar_cm_battery_summary">Ladezustand der Batterie in Prozent anzeigen. Bei Anzeigeproblemen mit anderen Designs ausschalten</string>
     <string name="ui_status_bar_oneperc_battery_title">Batterie in 1% Schritten</string>
     <string name="ui_status_bar_oneperc_battery_summary">Zeigt den Ladezustand der Batterie in 1% Schritten. Kann Probleme mit Batterien und Ladegeräten von Fremdherstellern verursachen. (erfordert Neustart)</string>
-    <string name="ui_status_bar_compact_carrier_title">Kompakter Betreibername</string>
-    <string name="ui_status_bar_compact_carrier_summary">Alternatives Layout des Benachrichtigungsbereichs mit kürzerem Betreibernamen.</string>
-    <string name="ui_status_bar_force_plmn_display">Erzwinge Anzeige des PLMN</string>
-    <string name="ui_status_bar_force_plmn_display_summary">Erzwingt unabhängig von der SIM-Karteneinstellung die Anzeige des PLMN bei SPDI Netzwerken. (Erfordert Neuanmeldung am Netzwerk)</string>
-    <string name="ui_status_bar_toggle_brightness">Statuszeile Helligkeitsanpassung</string>
-    <string name="ui_status_bar_toggle_brightness_summary">Erlaubt Änderung der Helligkeit, indem mit dem Finger über die Statuszeile gewischt wird.</string>
-=======
-    <string name="ui_status_bar_cm_battery_summary">Ladezustand der Batterie in Prozent anzeigen. Bei Anzeigeproblemen mit anderen Designs ausschalten</string>
     <string name="ui_status_bar_compact_carrier_title">Kompakter Betreiber</string>
     <string name="ui_status_bar_compact_carrier_summary">Alternatives Layout des Benachrichtigungsbereichs mit kürzerem Betreibernamen</string>
+    <string name="ui_status_bar_force_plmn_display">Erzwinge Anzeige des PLMN</string>
+    <string name="ui_status_bar_force_plmn_display_summary">Erzwingt unabhängig von der SIM-Karteneinstellung die Anzeige des PLMN bei SPDI Netzwerken. (Erfordert Neuanmeldung am Netzwerk)</string>
     <string name="ui_status_bar_toggle_brightness">Helligkeitsregler</string>
     <string name="ui_status_bar_toggle_brightness_summary">Erlaubt Änderung der Helligkeit, indem mit dem Finger über die Statusleiste gewischt wird</string>
->>>>>>> upstream/gingerbread
     <string name="ui_status_bar_toggle_info">Automatische Helligkeit ist aktiviert</string>
     <string name="ui_status_bar_cm_signal_text_title">Signalstärke in dBm</string>
     <string name="ui_status_bar_cm_signal_text_summary">Anzeige der Mobilfunk-Signalstärke in dBm statt der Balkenanzeige</string>
