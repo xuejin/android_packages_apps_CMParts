@@ -142,6 +142,7 @@
         <item>Rotativo</item>
         <item>Rotativo Remodelado</item>
         <item>Lente</item>
+        <item>Anel</item>
     </string-array>
 
     <string-array name="pref_lockscreen_music_headset_entries">
@@ -195,6 +196,7 @@
         <item>Aba Deslizante</item>
         <item>Giratório</item>
         <item>Giratório renovado</item>
+        <item>Anel</item>
     </string-array>
 
     <string-array name="entries_long_press_menu">
@@ -209,5 +211,20 @@
         <item>Cor de preenchimento</item>
         <item>Imagem personalizada</item>
         <item>Papel de parede padrão</item>
+    </string-array>
+
+    <string-array name="pref_lockscreen_calendar_lookahead_entries">
+        <item>3 horas</item>
+        <item>6 horas</item>
+        <item>12 horas</item>
+        <item>1 dia</item>
+        <item>3 dias</item>
+        <item>1 semana</item>
+    </string-array>
+
+    <string-array name="pref_lockscreen_widget_layout_entries">
+        <item>Padrão</item>
+        <item>Oculto</item>
+        <item>Centralizado</item>
     </string-array>
 </resources>

@@ -22,8 +22,21 @@
         <item>12</item>
         <item>15</item>
     </string-array>
-
+  
     <string-array name="entries_heapsize">
+        <item>12m</item>
+        <item>16m</item>
+        <item>24m</item>
+        <item>32m</item>
+        <item>36m</item>
+        <item>40m</item>
+        <item>42m</item>
+        <item>44m</item>
+        <item>48m</item>
+    </string-array>
+
+    <string-array name="values_heapsize" translatable="false">
+        <item>12m</item>
         <item>16m</item>
         <item>24m</item>
         <item>32m</item>
@@ -68,6 +81,42 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
+    </string-array>
+
+    <string-array name="entries_status_bar_cm_battery">
+        <item>Default</item>
+        <item>Percentage</item>
+        <item>Status Bar</item>
+    </string-array>
+
+    <string-array name="values_status_bar_cm_battery" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="entries_status_bar_cm_battery_color">
+        <item>Theme</item>
+        <item>Black</item>
+        <item>Blue</item>
+        <item>Gray</item>
+        <item>Green</item>
+        <item>Red</item>
+        <item>White</item>
+        <item>Yellow</item>
+        <item>Custom</item>
+    </string-array>
+
+    <string-array name="values_status_bar_cm_battery_color" translatable="false">
+        <item>theme</item>
+        <item>black</item>
+        <item>blue</item>
+        <item>gray</item>
+        <item>green</item>
+        <item>red</item>
+        <item>white</item>
+        <item>yellow</item>
+        <item>custom</item>
     </string-array>
 
      <string-array name="entries_status_bar_signal" translatable="false">
@@ -550,6 +599,7 @@
         <item>Rotary</item>
         <item>Rotary revamped</item>
         <item>Lense</item>
+        <item>Ring</item>
     </string-array>
 
     <string-array name="pref_lockscreen_style_values" translatable="false">
@@ -557,18 +607,21 @@
         <item>2</item>
         <item>3</item>
         <item>4</item>
+        <item>5</item>
     </string-array>
 
     <string-array name="pref_in_call_style_entries">
         <item>Sliding Tab</item>
         <item>Rotary</item>
         <item>Rotary revamped</item>
+        <item>Ring</item>
     </string-array>
 
     <string-array name="pref_in_call_style_values" translatable="false">
         <item>1</item>
         <item>2</item>
         <item>3</item>
+        <item>4</item>
     </string-array>
 
     <string-array name="pref_lockscreen_background_entries">
@@ -578,6 +631,18 @@
     </string-array>
 
     <string-array name="pref_lockscreen_background_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="pref_lockscreen_widget_layout_entries">
+        <item>Default</item>
+        <item>Hidden</item>
+        <item>Centered</item>
+    </string-array>
+
+    <string-array name="pref_lockscreen_widget_layout_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -595,6 +660,24 @@
         <item>1</item>
         <item>2</item>
         <item>3</item>
+    </string-array>
+
+    <string-array name="pref_lockscreen_calendar_lookahead_entries">
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>12 hours</item>
+        <item>1 day</item>
+        <item>3 days</item>
+        <item>1 week</item>
+    </string-array>
+
+    <string-array name="pref_lockscreen_calendar_lookahead_values" translatable="false">
+        <item>10800000</item>
+        <item>21600000</item>
+        <item>43200000</item>
+        <item>86400000</item>
+        <item>259200000</item>
+        <item>604800000</item>
     </string-array>
 
     <string-array name="pref_overscroll_effect_entries">
