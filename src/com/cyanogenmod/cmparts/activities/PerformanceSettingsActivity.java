@@ -93,6 +93,12 @@ public class PerformanceSettingsActivity extends PreferenceActivity implements P
 
     private static final int LOCK_MMS_DEFAULT = 1;
 
+    private static final String GMAPS_HACK_PREF = "pref_gmaps_hack";
+
+    private static final String GMAPS_HACK_PERSIST_PROP = "persist.sys.gmaps_hack";
+
+    private static final String GMAPS_HACK_DEFAULT = "1";
+
     private ListPreference mCompcachePref;
 
     private CheckBoxPreference mJitPref;
@@ -108,6 +114,8 @@ public class PerformanceSettingsActivity extends PreferenceActivity implements P
     private CheckBoxPreference mLockHomePref;
 
     private CheckBoxPreference mLockMmsPref;
+
+    private CheckBoxPreference mGmapsHackPref;
 
     private ListPreference mHeapsizePref;
 
@@ -171,6 +179,10 @@ public class PerformanceSettingsActivity extends PreferenceActivity implements P
         mLockMmsPref.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCK_MMS_IN_MEMORY, LOCK_MMS_DEFAULT) == 1);
 
+        mGmapsHackPref = (CheckBoxPreference) prefSet.findPreference(GMAPS_HACK_PREF);
+        String gmapshack = SystemProperties.get(GMAPS_HACK_PERSIST_PROP, GMAPS_HACK_DEFAULT);
+        mGmapsHackPref.setChecked("1".equals(gmapshack));
+
         // Set up the warning
         alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle(R.string.performance_settings_warning_title);
@@ -226,6 +238,12 @@ public class PerformanceSettingsActivity extends PreferenceActivity implements P
         if (preference == mLockMmsPref) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCK_MMS_IN_MEMORY, mLockMmsPref.isChecked() ? 1 : 0);
+            return true;
+        }
+
+        if (preference == mGmapsHackPref) {
+            SystemProperties.set(GMAPS_HACK_PERSIST_PROP,
+                    mGmapsHackPref.isChecked() ? "1" : "0");
             return true;
         }
 
