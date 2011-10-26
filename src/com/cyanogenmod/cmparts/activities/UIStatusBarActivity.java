@@ -139,16 +139,6 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
                 Settings.System.STATUS_BAR_CM_SIGNAL_TEXT, 0);
         mStatusBarCmSignal.setValue(String.valueOf(signalStyle));
         mStatusBarCmSignal.setOnPreferenceChangeListener(this);
-
-        int statusBarCmBattery = Settings.System.getInt(getContentResolver(),
-                Settings.System.STATUS_BAR_CM_BATTERY, 0);
-        mStatusBarCmBattery.setValue(String.valueOf(statusBarCmBattery));
-        mStatusBarCmBattery.setOnPreferenceChangeListener(this);
-
-        mStatusBarCmBatteryColor.setValue(Settings.System.getString(getContentResolver(),
-                Settings.System.STATUS_BAR_CM_BATTERY_COLOR));
-        mStatusBarCmBatteryColor.setOnPreferenceChangeListener(this);
-        mStatusBarCmBatteryColor.setEnabled(statusBarCmBattery == 2);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -166,29 +156,6 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
             int signalStyle = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(), Settings.System.STATUS_BAR_CM_SIGNAL_TEXT,
                     signalStyle);
-            return true;
-        } else if (preference == mStatusBarCmBattery) {
-            int statusBarCmBattery = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getContentResolver(), Settings.System.STATUS_BAR_CM_BATTERY,
-                    statusBarCmBattery);
-            mStatusBarCmBatteryColor.setEnabled(statusBarCmBattery == 2);
-            return true;
-        } else if (preference == mStatusBarCmBatteryColor) {
-            String statusBarCmBatteryColor = (String) newValue;
-            if ("custom".equals(statusBarCmBatteryColor)) {
-                int color = -1;
-                String colorString = Settings.System.getString(getContentResolver(),
-                        Settings.System.STATUS_BAR_CM_BATTERY_COLOR);
-                if (!TextUtils.isEmpty(colorString)) {
-                    try {
-                        color = Color.parseColor(colorString);
-                    } catch (IllegalArgumentException e) { }
-                }
-                new ColorPickerDialog(this, mColorListener, color).show();
-            } else {
-                Settings.System.putString(getContentResolver(),
-                        Settings.System.STATUS_BAR_CM_BATTERY_COLOR, statusBarCmBatteryColor);
-            }
             return true;
         }
         return false;
@@ -229,19 +196,4 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
         }
         return false;
     }
-
-    private OnColorChangedListener mColorListener = new OnColorChangedListener() {
-        @Override
-        public void colorUpdate(int color) {
-            // no-op
-        }
-
-        @Override
-        public void colorChanged(int color) {
-            String colorString = String.format("#%02x%02x%02x", Color.red(color),
-                    Color.green(color), Color.blue(color));
-            Settings.System.putString(getContentResolver(),
-                    Settings.System.STATUS_BAR_CM_BATTERY_COLOR, colorString);
-        }
-    };
 }
