@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -30,6 +32,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.view.KeyCharacterMap;
 
 import com.cyanogenmod.cmparts.R;
 import com.cyanogenmod.cmparts.utils.ShortcutPickHelper;
@@ -59,13 +62,31 @@ public class InputActivity extends PreferenceActivity implements
 
     private static final String KEYPAD_TYPE_PREF = "pref_keypad_type";
 
-    private static final String KEYPAD_TYPE_PREFIX_PROP = "ro.sys.keypad_type_prefix";
+    private static final String KEYPAD_PREFIX_PROP = "ro.sys.keypad_prefix";
 
     private static final String KEYPAD_TYPE_PERSIST_PROP = "persist.sys.keypad_type";
 
     private static final String KEYPAD_TYPE_HW_PROP = "hw.keyboards.0.devname";
 
     private static final String KEYPAD_TYPE_DEFAULT = "euro_qwerty";
+
+    private static final String KEYPAD_TYPE_SEC_PREF = "pref_keypad_type_sec";
+
+    private static final String KEYPAD_TYPE_SEC_PERSIST_PROP = "persist.sys.keypad_type_sec";
+
+    private static final String KEYPAD_TYPE_SEC_DEFAULT = "none";
+
+    private static final String KEYPAD_KEYLAYOUT_PREF = "pref_keypad_keylayout";
+
+    private static final String KEYPAD_KEYLAYOUT_PERSIST_PROP = "persist.sys.keylayout_alt";
+
+    private static final String KEYPAD_KEYLAYOUT_DEFAULT = "";
+
+    private static final String KEYPAD_MULTIPRESS_PREF = "pref_keypad_multipress";
+
+    private static final String KEYPAD_MULTIPRESS_PERSIST_PROP = "persist.sys.keypad_multipress_t";
+
+    private static final String KEYPAD_MULTIPRESS_DEFAULT = "500";
 
     private static final String QTOUCH_NUM_PREF = "pref_qtouch_num";
 
@@ -101,9 +122,21 @@ public class InputActivity extends PreferenceActivity implements
 
     private CheckBoxPreference mDockObserverOffPref;
 
-    private String mKeypadTypePrefix;
+    private String mKeypadPrefix;
+
+    private String mKeypadTypeSum;
+
+    private String mKeypadTypeSecSum;
+
+    private String mKeypadMultipressSum;
 
     private ListPreference mKeypadTypePref;
+
+    private ListPreference mKeypadTypeSecPref;
+
+    private CheckBoxPreference mKeypadKeylayoutPref;
+
+    private ListPreference mKeypadMultipressPref;
 
     private ListPreference mQtouchNumPref;
 
@@ -132,6 +165,10 @@ public class InputActivity extends PreferenceActivity implements
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
+        mKeypadTypeSum = getString(R.string.pref_keypad_type_summary);
+        mKeypadTypeSecSum = getString(R.string.pref_keypad_type_sec_summary);
+        mKeypadMultipressSum = getString(R.string.pref_keypad_multipress_summary);
+
         /* Trackball Wake */
         mTrackballWakePref = (CheckBoxPreference) prefSet.findPreference(TRACKBALL_WAKE_PREF);
         mTrackballWakePref.setChecked(Settings.System.getInt(getContentResolver(),
@@ -158,11 +195,28 @@ public class InputActivity extends PreferenceActivity implements
         String dockObserverOff = SystemProperties.get(DOCK_OBSERVER_OFF_PERSIST_PROP, DOCK_OBSERVER_OFF_DEFAULT);
         mDockObserverOffPref.setChecked("1".equals(dockObserverOff));
 
-        mKeypadTypePrefix = SystemProperties.get(KEYPAD_TYPE_PREFIX_PROP, "0");
+        mKeypadPrefix = SystemProperties.get(KEYPAD_PREFIX_PROP, "0");
         mKeypadTypePref = (ListPreference) prefSet.findPreference(KEYPAD_TYPE_PREF);
         String keypadType = SystemProperties.get(KEYPAD_TYPE_PERSIST_PROP, KEYPAD_TYPE_DEFAULT);
         mKeypadTypePref.setValue(keypadType);
+        mKeypadTypePref.setSummary(String.format(mKeypadTypeSum, mKeypadTypePref.getEntry()));
         mKeypadTypePref.setOnPreferenceChangeListener(this);
+
+        mKeypadTypeSecPref = (ListPreference) prefSet.findPreference(KEYPAD_TYPE_SEC_PREF);
+        keypadType = SystemProperties.get(KEYPAD_TYPE_SEC_PERSIST_PROP, KEYPAD_TYPE_SEC_DEFAULT);
+        mKeypadTypeSecPref.setValue(keypadType);
+        mKeypadTypeSecPref.setSummary(String.format(mKeypadTypeSecSum, mKeypadTypeSecPref.getEntry()));
+        mKeypadTypeSecPref.setOnPreferenceChangeListener(this);
+
+        mKeypadKeylayoutPref = (CheckBoxPreference) prefSet.findPreference(KEYPAD_KEYLAYOUT_PREF);
+        String keypadKeylayout = SystemProperties.get(KEYPAD_KEYLAYOUT_PERSIST_PROP, KEYPAD_KEYLAYOUT_DEFAULT);
+        mKeypadKeylayoutPref.setChecked("-russian".equals(keypadKeylayout));
+
+        mKeypadMultipressPref = (ListPreference) prefSet.findPreference(KEYPAD_MULTIPRESS_PREF);
+        String keypadMultipress = SystemProperties.get(KEYPAD_MULTIPRESS_PERSIST_PROP, KEYPAD_MULTIPRESS_DEFAULT);
+        mKeypadMultipressPref.setValue(keypadMultipress);
+        mKeypadMultipressPref.setSummary(String.format(mKeypadMultipressSum, mKeypadMultipressPref.getEntry()));
+        mKeypadMultipressPref.setOnPreferenceChangeListener(this);
 
         mQtouchNumPref = (ListPreference) prefSet.findPreference(QTOUCH_NUM_PREF);
         String qtouchNum = SystemProperties.get(QTOUCH_NUM_PERSIST_PROP, QTOUCH_NUM_DEFAULT);
@@ -223,6 +277,9 @@ public class InputActivity extends PreferenceActivity implements
 
         setAppSummary(mUserDefinedEnvelopeKeyPref, Settings.System.USER_DEFINED_KEY_ENVELOPE);
         setAppSummary(mUserDefinedExplorerKeyPref, Settings.System.USER_DEFINED_KEY_EXPLORER);
+        mKeypadTypePref.setSummary(String.format(mKeypadTypeSum, mKeypadTypePref.getEntry()));
+        mKeypadTypeSecPref.setSummary(String.format(mKeypadTypeSecSum, mKeypadTypeSecPref.getEntry()));
+        mKeypadMultipressPref.setSummary(String.format(mKeypadMultipressSum, mKeypadMultipressPref.getEntry()));
     }
 
     private void setAppSummary(Preference pref, String key) {
@@ -266,6 +323,10 @@ public class InputActivity extends PreferenceActivity implements
             SystemProperties.set(DOCK_OBSERVER_OFF_PERSIST_PROP,
                     mDockObserverOffPref.isChecked() ? "1" : "0");
             return true;
+        } else if (preference == mKeypadKeylayoutPref) {
+            SystemProperties.set(KEYPAD_KEYLAYOUT_PERSIST_PROP,
+                    mKeypadKeylayoutPref.isChecked() ? "-russian" : "");
+            return true;
         } else if (preference == mUserDefinedKey1Pref) {
             mKeyNumber = 1;
             mPicker.pickShortcut();
@@ -294,13 +355,50 @@ public class InputActivity extends PreferenceActivity implements
         return false;
     }
 
+    private void keypadChanged() {
+
+        class SendBroadcast extends Handler {
+            @Override
+            public void handleMessage(Message msg) {
+                Intent i = new Intent();
+                i.setAction("hw.keycharmap.change");
+                sendBroadcast(i);
+            }
+        }
+
+        Handler broadcastHandler = new SendBroadcast();
+        Message m = new Message();
+        broadcastHandler.sendMessageDelayed(m, 100);
+
+    }
+
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mKeypadTypePref) {
             String keypadType = (String) newValue;
             SystemProperties.set(KEYPAD_TYPE_PERSIST_PROP, keypadType);
-            if (!mKeypadTypePrefix.equals("0")) {
-                SystemProperties.set(KEYPAD_TYPE_HW_PROP, mKeypadTypePrefix + keypadType);
+            if (!mKeypadPrefix.equals("0")) {
+                SystemProperties.set(KEYPAD_TYPE_HW_PROP, mKeypadPrefix + keypadType);
             }
+            mKeypadTypePref.setSummary(String.format(mKeypadTypeSum,
+                    mKeypadTypePref.getEntries()[mKeypadTypePref.findIndexOfValue(keypadType)]));
+            keypadChanged();
+            return true;
+        } else if (preference == mKeypadTypeSecPref) {
+            String keypadType = (String) newValue;
+            SystemProperties.set(KEYPAD_TYPE_SEC_PERSIST_PROP, keypadType);
+            if (!mKeypadPrefix.equals("0")) {
+                SystemProperties.set(KEYPAD_TYPE_HW_PROP, mKeypadPrefix +
+                    mKeypadTypePref.getValue());
+            }
+            mKeypadTypeSecPref.setSummary(String.format(mKeypadTypeSecSum,
+                    mKeypadTypeSecPref.getEntries()[mKeypadTypeSecPref.findIndexOfValue(keypadType)]));
+            keypadChanged();
+            return true;
+        } else if (preference == mKeypadMultipressPref) {
+            String keypadMultipress = (String) newValue;
+            SystemProperties.set(KEYPAD_MULTIPRESS_PERSIST_PROP, keypadMultipress);
+            mKeypadMultipressPref.setSummary(String.format(mKeypadMultipressSum,
+                    mKeypadMultipressPref.getEntries()[mKeypadMultipressPref.findIndexOfValue(keypadMultipress)]));
             return true;
         } else if (preference == mQtouchNumPref) {
             String qtouchNum = (String) newValue;
