@@ -223,9 +223,10 @@
 
     <string-array name="pref_keypad_type_sec_entries">
         <item>none</item>
-        <item>arabic</item>
-        <item>hebrew</item>
-        <item>russian</item>
+        <item>Arabic</item>
+        <item>Hebrew</item>
+        <item>Russian</item>
+        <item>Russian v2</item>
     </string-array>
 
     <string-array name="pref_keypad_type_sec_values" translatable="false">
@@ -233,6 +234,7 @@
         <item>arabic</item>
         <item>hebrew</item>
         <item>russian</item>
+        <item>russian2</item>
     </string-array>
 
     <string-array name="pref_keypad_multipress_entries">
