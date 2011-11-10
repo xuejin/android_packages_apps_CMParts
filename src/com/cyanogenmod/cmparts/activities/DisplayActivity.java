@@ -63,14 +63,6 @@ public class DisplayActivity extends PreferenceActivity implements OnPreferenceC
     private CheckBoxPreference mRotation180Pref;
     private CheckBoxPreference mRotation270Pref;
 
-    private CheckBoxPreference mOMAPDSSmodePref;
-
-    private static final String OMAP_DSS_MODE_PREF = "pref_omap_dss_mode";
-
-    public static final String OMAP_DSS_MODE_PERSIST_PROP = "persist.sys.omap_dss_mode";
-
-    public static final String OMAP_DSS_MODE_DEFAULT = "0";
-
     private CheckBoxPreference mNaOnPlugPref;
 
     private static final String NA_ON_PLUG_PREF = "pref_na_on_plug";
@@ -127,11 +119,6 @@ public class DisplayActivity extends PreferenceActivity implements OnPreferenceC
         mRotation180Pref.setChecked((mode & ROTATION_180_MODE) != 0);
         mRotation270Pref.setChecked((mode & ROTATION_270_MODE) != 0);
 
-        /* Milestone specific kernel bug workaround (temporary) */
-        mOMAPDSSmodePref = (CheckBoxPreference) prefSet.findPreference(OMAP_DSS_MODE_PREF);
-        String omapDssMode = SystemProperties.get(OMAP_DSS_MODE_PERSIST_PROP, OMAP_DSS_MODE_DEFAULT);
-        mOMAPDSSmodePref.setChecked("1".equals(omapDssMode));
-
         /* Keep display off on plug */
         mNaOnPlugPref = (CheckBoxPreference) prefSet.findPreference(NA_ON_PLUG_PREF);
         String naOnPlug = SystemProperties.get(NA_ON_PLUG_PERSIST_PROP, NA_ON_PLUG_DEFAULT);
@@ -172,11 +159,6 @@ public class DisplayActivity extends PreferenceActivity implements OnPreferenceC
             }
             Settings.System.putInt(getContentResolver(),
                      Settings.System.ACCELEROMETER_ROTATION_MODE, mode);
-        }
-
-        if (preference == mOMAPDSSmodePref) {
-            SystemProperties.set(OMAP_DSS_MODE_PERSIST_PROP,
-                    mOMAPDSSmodePref.isChecked() ? "1" : "0");
         }
 
         if (preference == mNaOnPlugPref) {
