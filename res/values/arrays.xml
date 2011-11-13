@@ -241,6 +241,7 @@
 
     <string-array name="pref_keypad_multipress_entries">
         <item>0 (disabled)</item>
+        <item>200ms</item>
         <item>300ms</item>
         <item>400ms</item>
         <item>500ms</item>
@@ -249,6 +250,7 @@
 
     <string-array name="pref_keypad_multipress_values" translatable="false">
         <item>0</item>
+        <item>200</item>
         <item>300</item>
         <item>400</item>
         <item>500</item>
