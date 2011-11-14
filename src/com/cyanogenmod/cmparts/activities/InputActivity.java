@@ -368,7 +368,7 @@ public class InputActivity extends PreferenceActivity implements
 
         Handler broadcastHandler = new SendBroadcast();
         Message m = new Message();
-        broadcastHandler.sendMessageDelayed(m, 100);
+        broadcastHandler.sendMessageDelayed(m, 200);
 
     }
 
