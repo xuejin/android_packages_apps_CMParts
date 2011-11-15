@@ -302,6 +302,10 @@
     <string name="pref_lockscreen_ring_custom_apps_dialog_add">Add</string>
     <string name="pref_lockscreen_ring_custom_apps_dialog_remove">Remove</string>
     <string name="pref_lockscreen_ring_custom_apps_notset">Not Set</string>
+    <string name="pref_lockscreen_ring_unlock_middle_title">Unlock with middle ring</string>
+    <string name="pref_lockscreen_ring_unlock_middle_summary">Switch unlock and app launcher rings</string>
+    <string name="pref_lockscreen_ring_minimal_title">Minimal Ring Style</string>
+    <string name="pref_lockscreen_ring_minimal_summary">One ring in the middle to unlock</string>
     <string name="pref_lockscreen_custom_background_title">Choose background</string>
     <string name="pref_lockscreen_custom_background_dialog_title">Choose background</string>
     <string name="pref_lockscreen_custom_background_summary">Choose image or color as lockscreen background</string>
@@ -723,6 +727,9 @@
     <string name="gestures_toggle_sound">Toggle sound</string>
     <string name="gestures_shortcut_or_activity">Shortcut or activity</string>
     <string name="gestures_flashlight">Flashlight</string>
+    <string name="gestures_next">Next song</string>
+    <string name="gestures_previous">Previous song</string>
+    <string name="gestures_playpause">Play/Pause music</string>
     <string name="pref_lockscreen_disable_unlock_tab">Disable unlock slider</string>
     <string name="pref_lockscreen_disable_unlock_tab_summary">Note: You need to enable trackball, menu key, or gesture unlocking before this option becomes available</string>
     <string name="gestures_action_label">Action:</string>
