@@ -88,6 +88,12 @@ public class InputActivity extends PreferenceActivity implements
 
     private static final String KEYPAD_MULTIPRESS_DEFAULT = "500";
 
+    private static final String KEYPAD_MPLANG_PREF = "pref_keypad_mplang";
+
+    private static final String KEYPAD_MPLANG_PERSIST_PROP = "persist.sys.keypad_multipress_l";
+
+    private static final String KEYPAD_MPLANG_DEFAULT = "auto";
+
     private static final String QTOUCH_NUM_PREF = "pref_qtouch_num";
 
     private static final String QTOUCH_NUM_PERSIST_PROP = "persist.sys.qtouch_num";
@@ -130,6 +136,8 @@ public class InputActivity extends PreferenceActivity implements
 
     private String mKeypadMultipressSum;
 
+    private String mKeypadMplangSum;
+
     private ListPreference mKeypadTypePref;
 
     private ListPreference mKeypadTypeSecPref;
@@ -137,6 +145,8 @@ public class InputActivity extends PreferenceActivity implements
     private CheckBoxPreference mKeypadKeylayoutPref;
 
     private ListPreference mKeypadMultipressPref;
+
+    private ListPreference mKeypadMplangPref;
 
     private ListPreference mQtouchNumPref;
 
@@ -168,6 +178,7 @@ public class InputActivity extends PreferenceActivity implements
         mKeypadTypeSum = getString(R.string.pref_keypad_type_summary);
         mKeypadTypeSecSum = getString(R.string.pref_keypad_type_sec_summary);
         mKeypadMultipressSum = getString(R.string.pref_keypad_multipress_summary);
+        mKeypadMplangSum = getString(R.string.pref_keypad_mplang_summary);
 
         /* Trackball Wake */
         mTrackballWakePref = (CheckBoxPreference) prefSet.findPreference(TRACKBALL_WAKE_PREF);
@@ -217,6 +228,12 @@ public class InputActivity extends PreferenceActivity implements
         mKeypadMultipressPref.setValue(keypadMultipress);
         mKeypadMultipressPref.setSummary(String.format(mKeypadMultipressSum, mKeypadMultipressPref.getEntry()));
         mKeypadMultipressPref.setOnPreferenceChangeListener(this);
+
+        mKeypadMplangPref = (ListPreference) prefSet.findPreference(KEYPAD_MPLANG_PREF);
+        String keypadMplang = SystemProperties.get(KEYPAD_MPLANG_PERSIST_PROP, KEYPAD_MPLANG_DEFAULT);
+        mKeypadMplangPref.setValue(keypadMplang);
+        mKeypadMplangPref.setSummary(String.format(mKeypadMplangSum, mKeypadMplangPref.getEntry()));
+        mKeypadMplangPref.setOnPreferenceChangeListener(this);
 
         mQtouchNumPref = (ListPreference) prefSet.findPreference(QTOUCH_NUM_PREF);
         String qtouchNum = SystemProperties.get(QTOUCH_NUM_PERSIST_PROP, QTOUCH_NUM_DEFAULT);
@@ -280,6 +297,7 @@ public class InputActivity extends PreferenceActivity implements
         mKeypadTypePref.setSummary(String.format(mKeypadTypeSum, mKeypadTypePref.getEntry()));
         mKeypadTypeSecPref.setSummary(String.format(mKeypadTypeSecSum, mKeypadTypeSecPref.getEntry()));
         mKeypadMultipressPref.setSummary(String.format(mKeypadMultipressSum, mKeypadMultipressPref.getEntry()));
+        mKeypadMplangPref.setSummary(String.format(mKeypadMplangSum, mKeypadMplangPref.getEntry()));
     }
 
     private void setAppSummary(Preference pref, String key) {
@@ -399,6 +417,12 @@ public class InputActivity extends PreferenceActivity implements
             SystemProperties.set(KEYPAD_MULTIPRESS_PERSIST_PROP, keypadMultipress);
             mKeypadMultipressPref.setSummary(String.format(mKeypadMultipressSum,
                     mKeypadMultipressPref.getEntries()[mKeypadMultipressPref.findIndexOfValue(keypadMultipress)]));
+            return true;
+        } else if (preference == mKeypadMplangPref) {
+            String keypadMplang = (String) newValue;
+            SystemProperties.set(KEYPAD_MPLANG_PERSIST_PROP, keypadMplang);
+            mKeypadMplangPref.setSummary(String.format(mKeypadMplangSum,
+                    mKeypadMplangPref.getEntries()[mKeypadMplangPref.findIndexOfValue(keypadMplang)]));
             return true;
         } else if (preference == mQtouchNumPref) {
             String qtouchNum = (String) newValue;

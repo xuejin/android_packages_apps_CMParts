@@ -257,6 +257,52 @@
         <item>600</item>
     </string-array>
 
+    <string-array name="pref_keypad_mplang_entries">
+        <item>automatic</item>
+        <item>English (disabled)</item>
+        <item>Czech</item>
+        <item>Danish</item>
+        <item>German</item>
+        <item>German (\u00DF on B)</item>
+        <item>Spanish</item>
+        <item>Finnish</item>
+        <item>French</item>
+        <item>Hungarian</item>
+        <item>Italian</item>
+        <item>Lithuanian</item>
+        <item>Dutch</item>
+        <item>Norwegian</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
+        <item>Romanian</item>
+        <item>Slovak</item>
+        <item>Slovenian</item>
+        <item>Swedish</item>
+    </string-array>
+
+    <string-array name="pref_keypad_mplang_values" translatable="false">
+        <item>auto</item>
+        <item>en</item>
+        <item>cs</item>
+        <item>da</item>
+        <item>de</item>
+        <item>de2</item>
+        <item>es</item>
+        <item>fi</item>
+        <item>fr</item>
+        <item>hu</item>
+        <item>it</item>
+        <item>lt</item>
+        <item>nl</item>
+        <item>no</item>
+        <item>pl</item>
+        <item>pt</item>
+        <item>ro</item>
+        <item>sk</item>
+        <item>sl</item>
+        <item>sv</item>
+    </string-array>
+
     <string-array name="pref_qtouch_num_entries">
         <item>2</item>
         <item>4</item>

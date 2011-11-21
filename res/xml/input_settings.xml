@@ -101,6 +101,12 @@
 			android:summary="@string/pref_keypad_multipress_summary"
 			android:entries="@array/pref_keypad_multipress_entries"
 			android:entryValues="@array/pref_keypad_multipress_values" />
+		<ListPreference android:key="pref_keypad_mplang"
+			android:dialogTitle="@string/pref_keypad_mplang_title"
+			android:title="@string/pref_keypad_mplang_title"
+			android:summary="@string/pref_keypad_mplang_summary"
+			android:entries="@array/pref_keypad_mplang_entries"
+			android:entryValues="@array/pref_keypad_mplang_values" />
 		<CheckBoxPreference android:key="pref_keypad_keylayout"
 			android:title="@string/pref_keypad_keylayout_title"
 			android:summary="@string/pref_keypad_keylayout_summary" />
