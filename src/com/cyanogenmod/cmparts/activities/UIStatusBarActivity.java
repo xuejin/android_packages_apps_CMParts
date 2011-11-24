@@ -40,17 +40,9 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
 
     private static final String PREF_STATUS_BAR_CLOCK = "pref_status_bar_clock";
 
-    private static final String PREF_STATUS_BAR_ONEPERC_BATTERY = "pref_status_bar_oneperc_battery";
-
-    private static final String PREF_STATUS_BAR_CM_BATTERY_COLOR = "pref_status_bar_cm_battery_color";
-
     private static final String PREF_STATUS_BAR_COMPACT_CARRIER = "pref_status_bar_compact_carrier";
 
     private static final String PREF_FORCE_PLMN_DISPLAY = "pref_status_bar_force_plmn_display";
-
-    private static final String ONEPERC_BATT_PERSIST_PROP = "persist.sys.one_percent_batt";
-
-    private static final String ONEPERC_BATT_DEFAULT = "0";
 
     private static final String PREF_STATUS_BAR_BRIGHTNESS_CONTROL = "pref_status_bar_brightness_control";
 
@@ -69,8 +61,6 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
     private ListPreference mStatusBarCmBatteryColor;
 
     private CheckBoxPreference mStatusBarClock;
-
-    private CheckBoxPreference mStatusBarOnepercBattery;
 
     private CheckBoxPreference mStatusBarCompactCarrier;
 
@@ -92,10 +82,6 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
         mStatusBarClock = (CheckBoxPreference) prefSet.findPreference(PREF_STATUS_BAR_CLOCK);
         mStatusBarCompactCarrier = (CheckBoxPreference) prefSet
                 .findPreference(PREF_STATUS_BAR_COMPACT_CARRIER);
-        mStatusBarOnepercBattery = (CheckBoxPreference) prefSet
-                .findPreference(PREF_STATUS_BAR_ONEPERC_BATTERY);
-        String onepercBattery = SystemProperties.get(ONEPERC_BATT_PERSIST_PROP, ONEPERC_BATT_DEFAULT);
-        mStatusBarOnepercBattery.setChecked("1".equals(onepercBattery));
         mStatusBarForcePlmnDisplay = (CheckBoxPreference) prefSet.findPreference(PREF_FORCE_PLMN_DISPLAY);
         mStatusBarBrightnessControl = (CheckBoxPreference) prefSet
                 .findPreference(PREF_STATUS_BAR_BRIGHTNESS_CONTROL);
@@ -169,10 +155,6 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
             value = mStatusBarClock.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.STATUS_BAR_CLOCK,
                     value ? 1 : 0);
-            return true;
-        } else if (preference == mStatusBarOnepercBattery) {
-            SystemProperties.set(ONEPERC_BATT_PERSIST_PROP,
-                    mStatusBarOnepercBattery.isChecked() ? "1" : "0");
             return true;
         } else if (preference == mStatusBarCompactCarrier) {
             value = mStatusBarCompactCarrier.isChecked();

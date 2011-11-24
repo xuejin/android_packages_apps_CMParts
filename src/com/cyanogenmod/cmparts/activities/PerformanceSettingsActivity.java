@@ -79,12 +79,6 @@ public class PerformanceSettingsActivity extends PreferenceActivity implements P
 
     private static final String PURGEABLE_ASSETS_DEFAULT = "0";
 
-    private static final String LOGGER_PREF = "pref_logger";
-
-    private static final String LOGGER_PERSIST_PROP = "persist.service.aplogd.enable";
-
-    private static final String LOGGER_DEFAULT = "0";
-
     private static final String DISABLE_BOOTANIMATION_PREF = "pref_disable_bootanimation";
 
     private static final String DISABLE_BOOTANIMATION_PERSIST_PROP = "persist.sys.nobootanimation";
@@ -114,8 +108,6 @@ public class PerformanceSettingsActivity extends PreferenceActivity implements P
     private CheckBoxPreference mUse16bppAlphaPref;
 
     private CheckBoxPreference mPurgeableAssetsPref;
-
-    private CheckBoxPreference mLoggerPref;
 
     private CheckBoxPreference mDisableBootanimPref;
 
@@ -169,10 +161,6 @@ public class PerformanceSettingsActivity extends PreferenceActivity implements P
         mPurgeableAssetsPref = (CheckBoxPreference) prefSet.findPreference(PURGEABLE_ASSETS_PREF);
         String purgeableAssets = SystemProperties.get(PURGEABLE_ASSETS_PERSIST_PROP, PURGEABLE_ASSETS_DEFAULT);
         mPurgeableAssetsPref.setChecked("1".equals(purgeableAssets));
-
-        mLoggerPref = (CheckBoxPreference) prefSet.findPreference(LOGGER_PREF);
-        String logger = SystemProperties.get(LOGGER_PERSIST_PROP, LOGGER_DEFAULT);
-        mLoggerPref.setChecked("1".equals(logger));
 
         mHeapsizePref = (ListPreference) prefSet.findPreference(HEAPSIZE_PREF);
         mHeapsizePref.setValue(SystemProperties.get(HEAPSIZE_PERSIST_PROP,
@@ -232,12 +220,6 @@ public class PerformanceSettingsActivity extends PreferenceActivity implements P
         if (preference == mPurgeableAssetsPref) {
             SystemProperties.set(PURGEABLE_ASSETS_PERSIST_PROP,
                     mPurgeableAssetsPref.isChecked() ? "1" : "0");
-            return true;
-        }
-
-        if (preference == mLoggerPref) {
-            SystemProperties.set(LOGGER_PERSIST_PROP,
-                    mLoggerPref.isChecked() ? "1" : "0");
             return true;
         }
 
