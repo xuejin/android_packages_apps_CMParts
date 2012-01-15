@@ -419,6 +419,7 @@
     <string name="renderfx_temp">RenderFX</string>
     <string name="prefs_render_effect">Effet de rendu</string>
     <string name="notify_render_effect">Effet de rendu activé</string>
+    <string name="pref_widget_options_category_title">Général</string>
     <string name="add_widget">Ajouter le widget</string>
     <string name="pref_render_effect_none">Pas d\'effet de rendu</string>
     <string name="pref_render_effect_night">Mode nuit (3700K)</string>
@@ -496,6 +497,10 @@
     <string name="cm_sound_mode_soundVibrate">Son et vibreur</string>
     <string name="pref_flash_mode_title">Mode flash</string>
     <string name="pref_flash_mode_summary">Choisir la puissance du flash : Haute ou Death Ray</string>
+
+    <!-- Performance : Disable bootanimation -->
+    <string name="pref_disable_bootanimation_title">Désactiver animation de boot</string>
+    <string name="pref_disable_bootanimation_summary">Ne pas afficher l\'animation pour améliorer la vitesse de démarrage</string>
 
     <!-- Performance : Lock home memory -->
     <string name="pref_lock_home_title">Ecran d\'accueil en RAM</string>

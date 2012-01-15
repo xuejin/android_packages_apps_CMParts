@@ -17,12 +17,6 @@
 
 <resources>
 
-    <string-array name="entries_recent_apps_num">
-        <item>8</item>
-        <item>12</item>
-        <item>15</item>
-    </string-array>
-
     <string-array name="entries_heapsize">
         <item>12m</item>
         <item>16m</item>
@@ -195,6 +189,17 @@
         <item>Giratorio</item>
         <item>Deslizante</item>
         <item>Anillo</item>
+    </string-array>
+
+    <string-array name="pref_rotary_style_entries">
+        <item>Estilo clásico</item>
+        <item>Estilo renovado</item>
+    </string-array>
+
+    <string-array name="pref_ringlock_style_entries">
+        <item>Estilo clásico</item>
+        <item>Estilo renovado</item>
+        <item>Estilo Holo</item>
     </string-array>
 
     <string-array name="pref_in_call_style_entries">
