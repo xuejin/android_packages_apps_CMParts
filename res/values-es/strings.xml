@@ -99,6 +99,14 @@
     <string name="ui_status_bar_battery_summary">Cambiar el estilo del indicador de batería</string>
     <string name="ui_status_bar_compact_carrier_title">Etiqueta compacta de operador</string>
     <string name="ui_status_bar_compact_carrier_summary">Usar un diseño alternativo de notificación desplegable con el nombre del operador pequeño</string>
+    <string name="ui_status_bar_carrier_label_title">Tipo etiqueta operador</string>
+    <string name="ui_status_bar_carrier_label_summary">Cambiar la etiqueta del operador</string>
+    <string name="ui_status_bar_carrier_label_use_default">Predeterminado</string>
+    <string name="ui_status_bar_carrier_label_use_spn">Mostrar SPN</string>
+    <string name="ui_status_bar_carrier_label_use_plmn">Mostrar PLMN</string>
+    <string name="ui_status_bar_carrier_label_use_custom">Texto personalizado</string>
+    <string name="ui_status_bar_carrier_label_custom_title">Etiqueta personalizada</string>
+    <string name="ui_status_bar_carrier_label_custom_summary">Cambiar el texto para el nombre del operador</string>
     <string name="ui_status_bar_toggle_brightness">Barra de estado de control de brillo</string>
     <string name="ui_status_bar_toggle_brightness_summary">Permite el ajuste de brillo deslizando a través de la barra de estado</string>
     <string name="ui_status_bar_toggle_info">Brillo automático está habilitado</string>
@@ -261,6 +269,10 @@
     <string name="pref_lockscreen_always_battery_summary">Mostrar el estado de batería en la pantalla de bloqueo en cualquier momento</string>
     <string name="pref_lockscreen_widgets_layout_title">Comportamiento de widgets</string>
     <string name="pref_lockscreen_widgets_layout_summary">Ajustar comportamiento del reloj, fecha, operador ó estatus</string>
+    <string name="pref_lockscreen_widget_layout_entry_default">Izquierda</string>
+    <string name="pref_lockscreen_widget_layout_entry_hidden">Oculto</string>
+    <string name="pref_lockscreen_widget_layout_entry_centered">Centrado</string>
+    <string name="pref_lockscreen_widget_layout_entry_right">Derecha</string>
     <string name="pref_lockscreen_music_controls_title">Controles de música del protector de pantalla</string>
     <string name="pref_lockscreen_music_controls_summary">Muestra los controles de música en el protector de pantalla</string>
     <string name="pref_lockscreen_now_playing_title">Mostrar el nombre de la canción</string>
@@ -644,6 +656,8 @@
     <string name="sound_camera_shutter_disable_summary_off">El sonido del obturador será reproducido</string>
     <string name="sound_camera_shutter_disable_warning_title">AVISO: ¡Esto podría ser ilegal!</string>
     <string name="sound_camera_shutter_disable_warning">Deshabilitar el sonido de la cámara es ilegal en algunas zonas. ¿Seguro que quieres deshabilitarlo?</string>
+    <string name="sound_lock_volume_keys_title">Bloquear botones Volumen</string>
+    <string name="sound_lock_volume_keys_summary">Previene un uso accidental del volumen cuando el terminal está en modo silencio</string>
     <string name="sound_to_speaker_title">Reproducir siempre en el altavoz</string>
     <string name="sound_notifications_title">Notificaciones</string>
     <string name="sound_rings_title">Tonos de llamada</string>

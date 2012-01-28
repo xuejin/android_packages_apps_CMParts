@@ -59,6 +59,20 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="entries_status_bar_carrier_label" translatable="false">
+	<item>@string/ui_status_bar_carrier_label_use_default</item>
+	<item>@string/ui_status_bar_carrier_label_use_spn</item>
+	<item>@string/ui_status_bar_carrier_label_use_plmn</item>
+	<item>@string/ui_status_bar_carrier_label_use_custom</item>
+    </string-array>
+
+    <string-array name="values_status_bar_carrier_label" translatable="false">
+	<item>0</item>
+	<item>1</item>
+	<item>2</item>
+	<item>3</item>
+    </string-array>
+
     <string-array name="entries_status_bar_am_pm">
         <item>Normal</item>
         <item>Small</item>
@@ -705,16 +719,18 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="pref_lockscreen_widget_layout_entries">
-        <item>Default</item>
-        <item>Hidden</item>
-        <item>Centered</item>
+    <string-array name="pref_lockscreen_widget_layout_entries" translatable="false">
+        <item>@string/pref_lockscreen_widget_layout_entry_default</item>
+        <item>@string/pref_lockscreen_widget_layout_entry_hidden</item>
+        <item>@string/pref_lockscreen_widget_layout_entry_centered</item>
+        <item>@string/pref_lockscreen_widget_layout_entry_right</item>
     </string-array>
 
     <string-array name="pref_lockscreen_widget_layout_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
 
     <string-array name="pref_lockscreen_music_headset_entries">
