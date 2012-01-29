@@ -24,10 +24,6 @@
 			android:title="@string/ui_status_bar_compact_carrier_title"
 			android:summary="@string/ui_status_bar_compact_carrier_summary"
 			android:defaultValue="false" />
-		<CheckBoxPreference android:key="pref_status_bar_force_plmn_display"
-			android:title="@string/ui_status_bar_force_plmn_display"
-			android:summary="@string/ui_status_bar_force_plmn_display_summary"
-			android:defaultValue="false" />
 		<ListPreference android:key="pref_status_bar_carrier_label"
 			android:dialogTitle="@string/ui_status_bar_carrier_label_title"
 			android:title="@string/ui_status_bar_carrier_label_title"

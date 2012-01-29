@@ -103,8 +103,6 @@
     <string name="ui_status_bar_battery_summary">Display style of battery status</string>
     <string name="ui_status_bar_compact_carrier_title">Compact carrier label</string>
     <string name="ui_status_bar_compact_carrier_summary">Use alternate notification dropdown layout with mini carrier label</string>
-    <string name="ui_status_bar_force_plmn_display">Force PLMN display</string>
-    <string name="ui_status_bar_force_plmn_display_summary">This forces displaying PLMN for SPDI networks, regardless of SIM card setting. (Requires re-registering to the network)</string>
     <string name="ui_status_bar_carrier_label_title">Carrier label type</string>
     <string name="ui_status_bar_carrier_label_summary">Change what is used as carrier label</string>
     <string name="ui_status_bar_carrier_label_use_default">Default</string>

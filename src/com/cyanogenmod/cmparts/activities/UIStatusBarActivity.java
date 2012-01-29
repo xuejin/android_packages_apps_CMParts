@@ -52,8 +52,6 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
 
     private static final String PREF_STATUS_BAR_COMPACT_CARRIER = "pref_status_bar_compact_carrier";
 
-    private static final String PREF_FORCE_PLMN_DISPLAY = "pref_status_bar_force_plmn_display";
-
     private static final String PREF_STATUS_BAR_BRIGHTNESS_CONTROL = "pref_status_bar_brightness_control";
 
     private static final String PREF_STATUS_BAR_CM_SIGNAL = "pref_status_bar_cm_signal";
@@ -66,17 +64,11 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
 
     private ListPreference mStatusBarCmSignal;
 
-    private ListPreference mStatusBarCmBattery;
-
-    private ListPreference mStatusBarCmBatteryColor;
-
     private ListPreference mStatusBarCarrierLabel;
 
     private CheckBoxPreference mStatusBarClock;
 
     private CheckBoxPreference mStatusBarCompactCarrier;
-
-    private CheckBoxPreference mStatusBarForcePlmnDisplay;
 
     private CheckBoxPreference mStatusBarBrightnessControl;
 
@@ -96,7 +88,6 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
         mStatusBarClock = (CheckBoxPreference) prefSet.findPreference(PREF_STATUS_BAR_CLOCK);
         mStatusBarCompactCarrier = (CheckBoxPreference) prefSet
                 .findPreference(PREF_STATUS_BAR_COMPACT_CARRIER);
-        mStatusBarForcePlmnDisplay = (CheckBoxPreference) prefSet.findPreference(PREF_FORCE_PLMN_DISPLAY);
         mStatusBarBrightnessControl = (CheckBoxPreference) prefSet
                 .findPreference(PREF_STATUS_BAR_BRIGHTNESS_CONTROL);
         mStatusBarHeadset = (CheckBoxPreference) prefSet.findPreference(PREF_STATUS_BAR_HEADSET);
@@ -105,8 +96,6 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
                 Settings.System.STATUS_BAR_CLOCK, 1) == 1));
         mStatusBarCompactCarrier.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_COMPACT_CARRIER, 0) == 1));
-        mStatusBarForcePlmnDisplay.setChecked((Settings.System.getInt(getContentResolver(),
-                Settings.System.STATUS_BAR_FORCE_PLMN_DISPLAY, 0) == 1));
         mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_BRIGHTNESS_TOGGLE, 0) == 1));
         mStatusBarHeadset.setChecked((Settings.System.getInt(getContentResolver(),
@@ -222,10 +211,6 @@ public class UIStatusBarActivity extends PreferenceActivity implements OnPrefere
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_COMPACT_CARRIER, value ? 1 : 0);
             return true;
-        } else if (preference == mStatusBarForcePlmnDisplay) {
-            value = mStatusBarForcePlmnDisplay.isChecked();
-            Settings.System.putInt(getContentResolver(), Settings.System.STATUS_BAR_FORCE_PLMN_DISPLAY,
-                    value ? 1 : 0);
         } else if (preference == mStatusBarBrightnessControl) {
             value = mStatusBarBrightnessControl.isChecked();
             Settings.System.putInt(getContentResolver(),
