@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string-array name="entries_heapsize">
-		<item>12MB</item>
-		<item>16MB</item>
-		<item>24MB</item>
-		<item>32MB</item>
-		<item>48MB</item>
-	</string-array>
-
 	<string-array name="entries_install_location">
 		<item>Automaticky</item>
 		<item>Interní</item>
