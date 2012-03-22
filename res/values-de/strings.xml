@@ -499,7 +499,7 @@
 
     <!-- Performance : GMAPS hack -->
     <string name="pref_gmaps_hack_title">GMAPS hack</string>
-    <string name="pref_gmaps_hack_summary">Mehr freier RAM durch beenden des NetworkLocationService. Latitude kann die Position nicht mehr zuverlässig melden. (Neustart erforderlich)</string>
+    <string name="pref_gmaps_hack_summary">Mehr freier RAM durch beenden des NetworkLocationService. Latitude kann die Position nicht mehr zuverlässig melden. (GMaps Neustart erforderlich)</string>
 
     <!-- Performance Settings : Warning dialog -->
     <string name="performance_settings_warning_title">VORSICHT!</string>
