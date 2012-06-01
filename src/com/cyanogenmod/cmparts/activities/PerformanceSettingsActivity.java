@@ -97,7 +97,7 @@ public class PerformanceSettingsActivity extends PreferenceActivity implements P
 
     private static final int LOCK_HOME_DEFAULT = 1;
 
-    private static final int LOCK_MMS_DEFAULT = 1;
+    private static final int LOCK_MMS_DEFAULT = 0;
 
     private static final String GMAPS_HACK_PREF = "pref_gmaps_hack";
 
