@@ -448,8 +448,8 @@
     <string name="pref_lock_mms_summary">可以防止在内存不足的情况下丢失消息</string>
 
     <!-- Performance Settings : Warning dialog -->
-    <string name="performance_settings_warning_title">警告：前面有怪兽！</string>
-    <string name="performance_settings_warning">这里的选项会改变系统的性能，这可能意味着会变得更差。它们只作实验用途，如果您更改过这里的设置，请不要向我们提交 bug 报告。</string>
+    <string name="performance_settings_warning_title">警告:前方有巨龙出现!</string>
+    <string name="performance_settings_warning">这里的选项将改变您的系统性能, 选项包含实验功能可能导致性能变差. 如果你改变任何默认值出现错误请向我们提交错误报告</string>
 
     <!-- Application Settings -->
     <string name="application_settings_title">应用程序设置</string>
