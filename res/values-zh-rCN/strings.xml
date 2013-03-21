@@ -38,6 +38,8 @@
 
     <string name="pref_electron_beam_animation_on">屏幕开启动画</string>
     <string name="pref_electron_beam_animation_off">屏幕关闭动画</string>
+    <string name="pref_rotation_animation_title">旋转动画</string>
+    <string name="pref_rotation_animation_summary">需要重新启动</string>
 
     <!-- User interface: Tablet tweaks -->
     <string name="tablet_tweaks_title_head">平板优化</string>
@@ -90,6 +92,9 @@
     <string name="pref_rotation_180_title">180 度</string>
     <string name="pref_rotation_270_title">270 度</string>
 
+    <string name="pref_na_on_plug_title">充电下保持显示关闭</string>
+    <string name="pref_na_on_plug_summary">当启用该项, 当手机插入USB或电源显示屏将不会自动开启 (例如太阳能电源适配器就很有用).</string>
+    
     <!-- User interface: Status bar tweaks -->
     <string name="ui_status_bar_title">状态栏调整</string>
     <string name="ui_status_bar_am_pm_title">上午／下午格式</string>
@@ -111,6 +116,13 @@
     <string name="ui_status_bar_toggle_brightness">状态栏亮度控制</string>
     <string name="ui_status_bar_toggle_brightness_summary">允许滑动状态栏以调整亮度</string>
     <string name="ui_status_bar_toggle_info">亮度自动调整已启用</string>
+    <string name="ui_status_bar_cm_signal_text_title">备用信号显示</string>
+    <string name="ui_status_bar_cm_signal_text_summary">显示dBm值而不是信号条</string>
+    <string name="ui_status_bar_cm_signal_text_show_bars">信号条</string>
+    <string name="ui_status_bar_cm_signal_text_show_text">信号文字</string>
+    <string name="ui_status_bar_cm_signal_text_show_text_dbm">信号文字 w/dBm值</string>
+    <string name="ui_status_bar_headset_title">显示耳机图标</string>
+    <string name="ui_status_bar_headset_summary">当插入耳机后耳机图标将出现</string>
 
     <!-- User interface : LED Notifications -->
     <string name="trackball_title">LED 通知</string>
@@ -132,38 +144,23 @@
     <string name="pref_overscroll_weight_summary">选择越界对象的程度</string>
 
     <!-- User interface : Lock Screen -->
-    <string name="pref_lockscreen_disable_on_security_title">只显示解锁屏幕</string>
-    <string name="pref_lockscreen_disable_on_security_summary">当屏幕安全性（图形、PIN、密码）为启用时不显示锁定屏幕，直接显示解锁输入介面</string>
     <string name="pref_lockscreen_delay_title">延迟</string>
-    <string name="pref_lockscreen_widgets_layout_title">小部件布局</string>
-    <string name="pref_lockscreen_widgets_layout_summary">切换时钟,日期,载体,状态布局</string>
-    <string name="pref_lockscreen_widget_layout_entry_default">默认</string>
-    <string name="pref_lockscreen_widget_layout_entry_hidden">隐藏</string>
-    <string name="pref_lockscreen_widget_layout_entry_centered">居中</string>
-    <string name="pref_lockscreen_widget_layout_entry_right">靠右</string>
-    <string name="pref_lockscreen_security_title">安全性锁定</string>
-    <string name="pref_lockscreen_security_delay_note_title">注意</string>
-    <string name="pref_lockscreen_security_delay_note_summary">当屏幕锁定安全性设定为“无”时，被使用的将会是这一组延迟时间</string>
+    <string name="pref_lockscreen_security_title">安全锁定</string>
+    <string name="pref_lockscreen_security_delay_note_title">注释</string>
+    <string name="pref_lockscreen_security_delay_note_summary">屏幕锁的安全性设置为无时安全锁定延时设置才会被使用</string>
     <string name="pref_lockscreen_security_timeout_lock_delay">屏幕超时延迟</string>
     <string name="pref_lockscreen_security_screenoff_lock_delay">屏幕关闭延迟</string>
-    <string name="pref_lockscreen_security_timeout_lock_delay_summary">屏幕超时后延迟多久才启用安全性锁定屏幕</string>
-    <string name="pref_lockscreen_security_screenoff_lock_delay_summary">屏幕关闭后延迟多久才启用安全性锁定屏幕</string>
-    <string name="pref_lockscreen_slide_title">滑动式锁定</string>
-    <string name="pref_lockscreen_slide_delay_note_title">注意</string>
-    <string name="pref_lockscreen_slide_delay_note_summary">即使这启用了，安全性锁定延迟的时间亦必须比滑动式锁定延迟的时间长，滑动式锁定屏幕才会被显示出来</string>
-    <string name="pref_lockscreen_slide_delay_title">启用滑动式锁定延迟</string>
-    <string name="pref_lockscreen_slide_delay_summary">以另外的延迟时间显示滑动式锁定屏幕，然后才显示安全性锁定屏幕</string>
+    <string name="pref_lockscreen_security_timeout_lock_delay_summary">使屏幕安全锁时屏幕超时之前要延迟多长时间</string>
+    <string name="pref_lockscreen_security_screenoff_lock_delay_summary">当屏幕关闭时使屏幕安全锁生效要延迟多长时间</string>
+    <string name="pref_lockscreen_slide_title">滑动锁定</string>
+    <string name="pref_lockscreen_slide_delay_note_title">注释</string>
+    <string name="pref_lockscreen_slide_delay_note_summary">Even if enabled, the unsecured slide lock will only appear if the security lock delay is longer than the slide lock delay</string>
+    <string name="pref_lockscreen_slide_delay_title">启用滑锁延迟</string>
+    <string name="pref_lockscreen_slide_delay_summary">Shows screen slide lock on a separate delay before showing security lock</string>
     <string name="pref_lockscreen_slide_timeout_lock_delay">屏幕超时延迟</string>
     <string name="pref_lockscreen_slide_screenoff_lock_delay">屏幕关闭延迟</string>
-    <string name="pref_lockscreen_slide_timeout_lock_delay_summary">屏幕超时后延迟多久才启用滑动式锁定屏幕</string>
-    <string name="pref_lockscreen_slide_screenoff_lock_delay_summary">屏幕关闭后延迟多久才启用滑动式锁定屏幕</string>
-
-    <string name="camera_title">相机</string>
-    <string name="sound_camera_shutter_disable_title">相机快门静音</string>
-    <string name="sound_camera_shutter_disable_summary_on">快门声音不开启</string>
-    <string name="sound_camera_shutter_disable_summary_off">快门声音开启</string>
-    <string name="sound_camera_shutter_disable_warning_title">警告: 这可能是违法的!</string>
-    <string name="sound_camera_shutter_disable_warning">相机快门静音在某些地区是违法的. 你确定要静音吗?</string>
+    <string name="pref_lockscreen_slide_timeout_lock_delay_summary">How long to delay before enabling screen slide lock when screen times out</string>
+    <string name="pref_lockscreen_slide_screenoff_lock_delay_summary">How long to delay before enabling screen slide lock when screen is turned off</string>
 
     <!-- Color Picker -->
     <string name="title_color_picker">选择颜色</string>
@@ -197,32 +194,39 @@
     <string name="pref_trackball_reset_summary">重置所有的颜色与应用程序设置</string>
     <string name="dialog_trackball_loading">正在载入...</string>
     <string name="dialog_trackball_packagelist">正在载入应用程序列表</string>
-    <string name="trackball_category_dialog_text">请输入一个新的类别</string>
-    <string name="trackball_category_list_title">类别</string>
-    <string name="trackball_category_list_summary">选择类别</string>
-    <string name="trackball_category_screen">管理类别</string>
-    <string name="trackball_category_add_title">添加类别</string>
-    <string name="trackball_category_add_summary">向类别列表中添加一个新的类别</string>
-    <string name="trackball_category_remove_title">删除类别</string>
-    <string name="trackball_category_remove_summary">从类别列表中删除一个类别</string>
+    <string name="trackball_category_dialog_text">请输入一个新的分类</string>
+    <string name="trackball_category_list_title">分类</string>
+    <string name="trackball_category_list_summary">选择一个分类string>
+    <string name="trackball_category_screen">管理分类</string>
+    <string name="trackball_category_add_title">添加分类string>
+    <string name="trackball_category_add_summary">添加一个分类到列表</string>
+    <string name="trackball_category_add_error_title">错误</string>
+    <string name="trackball_category_add_error_summary">分类名称可能不包含 \'=\'</string>
+    <string name="trackball_category_remove_title">删除分类</string>
+    <string name="trackball_category_remove_summary">从列表中删除一个分类</string>
     <string name="trackball_category_edit_title">编辑分类设置</string>
-    <string name="trackball_category_edit_summary">为该分类编辑默认设置</string>
-    <string name="trackball_reset_all">重置所有的颜色与类别设置</string>
-    <string name="trackball_color_notice_title">注意：</string>
-    <string name="trackball_color_notice_summary">并非所有颜色能在所有设备上显示。</string>
+    <string name="trackball_category_edit_summary">Edit the default settings for this category</string>
+    <string name="trackball_reset_all">重置所有的颜色和分类.</string>
+    <string name="trackball_color_notice_title">注意:</string>
+    <string name="trackball_color_notice_summary">Not all colors will display on all devices</string>
     <string name="trackball_category_unconfigured">未配置</string>
-    <string name="trackball_app_email">邮箱</string>
-    <string name="trackball_app_mms">信息</string>
-    <string name="trackball_app_dialer">未接电话</string>
-    <string name="trackball_force_mode_title">LED模式</string>
-    <string name="trackball_force_mode_dialog">请选择一种模式</string>
-    <string name="trackball_force_mode_summary">配置LED的行为</string>
-    <string name="trackball_color_entry_use_app">使用应用程序默认设置</string>
-    <string name="trackball_category_misc">各种的</string>
+    <string name="trackball_category_misc">杂项</string>
     <string name="trackball_app_save_title">保存</string>
-    <string name="trackball_app_save_summary">为该应用程序保存设置</string>
+    <string name="trackball_app_save_summary">保存此应用程序的设置</string>
     <string name="trackball_app_reset_title">重置</string>
-    <string name="trackball_app_reset_summary">移除该应用程序的自定义设置</string>
+    <string name="trackball_app_reset_summary">Remove custom settings for this application</string>
+    
+    <string name="trackball_force_mode_title">LED模式</string>
+    <string name="trackball_force_mode_dialog">请选择一个模式</string>
+    <string name="trackball_force_mode_summary">配置LED的行为tring>
+
+    <string name="trackball_app_email">电子邮件</string>
+    <string name="trackball_app_mms">消息传送</string>
+    <string name="trackball_app_gvoice">谷歌语音</string>
+    <string name="trackball_app_gmail">Gmail</string>
+    <string name="trackball_app_gtalk">GTalk</string>
+    <string name="trackball_app_twitter">Twitter</string>
+    <string name="trackball_app_twicca">Twicca</string>
 
     <!-- Trackball color entries -->
     <string name="trackball_color_entry_green">绿色</string>
