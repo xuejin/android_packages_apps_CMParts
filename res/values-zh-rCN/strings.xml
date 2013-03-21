@@ -146,14 +146,14 @@
     <!-- User interface : Lock Screen -->
     <string name="pref_lockscreen_delay_title">延迟</string>
     <string name="pref_lockscreen_security_title">安全锁定</string>
-    <string name="pref_lockscreen_security_delay_note_title">注释</string>
+    <string name="pref_lockscreen_security_delay_note_title">注意</string>
     <string name="pref_lockscreen_security_delay_note_summary">屏幕锁的安全性设置为无时安全锁定延时设置才会被使用</string>
     <string name="pref_lockscreen_security_timeout_lock_delay">屏幕超时延迟</string>
     <string name="pref_lockscreen_security_screenoff_lock_delay">屏幕关闭延迟</string>
     <string name="pref_lockscreen_security_timeout_lock_delay_summary">使屏幕安全锁时屏幕超时之前要延迟多长时间</string>
     <string name="pref_lockscreen_security_screenoff_lock_delay_summary">当屏幕关闭时使屏幕安全锁生效要延迟多长时间</string>
     <string name="pref_lockscreen_slide_title">滑动锁定</string>
-    <string name="pref_lockscreen_slide_delay_note_title">注释</string>
+    <string name="pref_lockscreen_slide_delay_note_title">注意</string>
     <string name="pref_lockscreen_slide_delay_note_summary">Even if enabled, the unsecured slide lock will only appear if the security lock delay is longer than the slide lock delay</string>
     <string name="pref_lockscreen_slide_delay_title">启用滑锁延迟</string>
     <string name="pref_lockscreen_slide_delay_summary">Shows screen slide lock on a separate delay before showing security lock</string>
@@ -205,16 +205,16 @@
     <string name="trackball_category_remove_title">删除分类</string>
     <string name="trackball_category_remove_summary">从列表中删除一个分类</string>
     <string name="trackball_category_edit_title">编辑分类设置</string>
-    <string name="trackball_category_edit_summary">Edit the default settings for this category</string>
+    <string name="trackball_category_edit_summary">编辑该分类的默认设置</string>
     <string name="trackball_reset_all">重置所有的颜色和分类.</string>
     <string name="trackball_color_notice_title">注意:</string>
-    <string name="trackball_color_notice_summary">Not all colors will display on all devices</string>
+    <string name="trackball_color_notice_summary">并非所有的颜色在所有设备上都将显示</string>
     <string name="trackball_category_unconfigured">未配置</string>
     <string name="trackball_category_misc">杂项</string>
     <string name="trackball_app_save_title">保存</string>
     <string name="trackball_app_save_summary">保存此应用程序的设置</string>
     <string name="trackball_app_reset_title">重置</string>
-    <string name="trackball_app_reset_summary">Remove custom settings for this application</string>
+    <string name="trackball_app_reset_summary">删除此应用程序中的自定义设置</string>
     
     <string name="trackball_force_mode_title">LED模式</string>
     <string name="trackball_force_mode_dialog">请选择一个模式</string>
